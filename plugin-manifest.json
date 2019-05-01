@@ -1,0 +1,50 @@
+{
+  "api": {
+    "require_startup_execution": false,
+    "class_name": "com.applicaster.awscognitologin.AWSCognitoProviderHandler"
+  },
+  "dependency_repository_url": [
+
+  ],
+  "platform": "android",
+  "author_name": "Juan Hernandez",
+  "author_email": "j.hernandez@applicaster.com",
+  "manifest_version": "0.0.1",
+  "name": "AWSCognitoLogin",
+  "description": "Plugin to connect AWS Login services to our apps",
+  "type": "login",
+  "screen": true,
+  "identifier": "AWSCognitoLogin",
+  "ui_builder_support": true,
+  "dependency_name": "com.applicaster:AWSCognitoLogin-Android",
+  "dependency_version": "0.0.1",
+  "whitelisted_account_ids": [
+    "5bb621649adec2000c289f22"
+  ],
+  "min_zapp_sdk": "8.0.0",
+  "deprecated_since_zapp_sdk": "",
+  "unsupported_since_zapp_sdk": "",
+  "react_native": false,
+  "custom_configuration_fields": [
+      {
+        "key": "clientID",
+        "tooltip_text": "Client Id provided by AWS",
+        "type": "text_input"
+      },
+      {
+        "key": "clientSecret",
+        "tooltip_text": "Client secret provided by AWS",
+        "type": "text_input"
+      },
+      {
+        "key": "Region",
+        "tooltip_text": "Region",
+        "type": "text_input"
+      },
+      {
+        "key": "userpoolid",
+        "tooltip_text": "User pool id",
+        "type": "text_input"
+      }
+  ]
+}
