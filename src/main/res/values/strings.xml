@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">AWSCognitoLogin</string>
+    <string name="awsco_user_input_placeholder_txt">User</string>
+    <string name="awsco_password_input_placeholder_txt">Password</string>
+    <string name="awsco_signup_btn_qt_txt">Don\'t have an account?</string>
+    <string name="awsco_signup_btn_answ_text">Sign Up</string>
+    <string name="awsco_actacc_txt">Activate account</string>
+    <string name="awsco_forpas_txt">Forgot password</string>
 </resources>

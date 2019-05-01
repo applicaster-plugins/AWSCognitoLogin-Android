@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="awsco_input_fontsize">14sp</dimen>
+    <dimen name="awsco_validation_fontsize">10sp</dimen>
+    <dimen name="awsco_btn_fontsize">14sp</dimen>
+    <dimen name="awsco_link_fontsize">12sp</dimen>
+</resources>

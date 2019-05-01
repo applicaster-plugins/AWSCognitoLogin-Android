@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="awsco_bc_color">@color/white</color>
+    <color name="awsco_input_ulc">#4F5DED</color>
+    <color name="awsco_input_txt_color">#000000</color>
+    <color name="awsco_validation_txt_color">#CC1978</color>
+    <color name="awsco_btn_txt_color">#000000</color>
+    <color name="awsco_btn_color">#CC1978</color>
+    <color name="awsco_btn_br_color">#00000000</color>
+    <color name="awsco_link_color">#000000</color>
+</resources>
