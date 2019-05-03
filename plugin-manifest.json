@@ -1,7 +1,7 @@
 {
   "api": {
     "require_startup_execution": false,
-    "class_name": "com.applicaster.awscognitologin.AWSCognitoProviderHandler"
+    "class_name": "com.applicaster.awscognitologin.AWSCognitoLoginContract"
   },
   "dependency_repository_url": [
 
@@ -29,22 +29,22 @@
       {
         "key": "clientID",
         "tooltip_text": "Client Id provided by AWS",
-        "type": "text_input"
+        "type": "text"
       },
       {
         "key": "clientSecret",
         "tooltip_text": "Client secret provided by AWS",
-        "type": "text_input"
+        "type": "text"
       },
       {
         "key": "Region",
         "tooltip_text": "Region",
-        "type": "text_input"
+        "type": "text"
       },
       {
         "key": "userpoolid",
         "tooltip_text": "User pool id",
-        "type": "text_input"
+        "type": "text"
       }
   ]
 }
