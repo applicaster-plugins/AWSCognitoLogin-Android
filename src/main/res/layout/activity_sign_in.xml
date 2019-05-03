@@ -26,27 +26,47 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="10dp"
         android:text="Sign In"
-        android:textSize="15sp"
+        android:textColor="@color/awsco_confirmation_title_color"
+        android:textColorHint="@color/faded_black"
+        android:textSize="@dimen/awsco_confirmation_title_fontsize"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_logo" />
 
-    <EditText
+    <!--<android.support.design.widget.TextInputLayout-->
+    <!--android:id="@+id/et_layout_user"-->
+    <!--android:layout_width="@dimen/et_field_width"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginTop="12dp"-->
+    <!--android:backgroundTint="@color/awsco_input_ulc"-->
+    <!--android:hint="@string/awsco_user_input_placeholder_txt"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/tv_sign_in_title">-->
+
+    <!--<EditText-->
+    <!--android:id="@+id/et_user"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:inputType="text"-->
+    <!--android:textColor="@color/awsco_input_txt_color"-->
+    <!--android:textColorHint="@color/faded_black"-->
+    <!--android:textSize="@dimen/awsco_input_fontsize" />-->
+
+    <!--</android.support.design.widget.TextInputLayout>-->
+
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/et_user"
         android:layout_width="@dimen/et_field_width"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="15dp"
-        android:backgroundTint="@color/awsco_input_ulc"
-        android:ems="10"
         android:hint="@string/awsco_user_input_placeholder_txt"
-        android:inputType="textPersonName"
-        android:textColor="@color/awsco_input_txt_color"
-        android:textSize="@dimen/awsco_input_fontsize"
+        android:textColorHint="@color/faded_black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_sign_in_title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_sign_in_title"
+        app:met_floatingLabel="normal"
+        app:met_underlineColor="@color/awsco_input_ulc" />
 
     <TextView
         android:id="@+id/tv_user_helper"
@@ -59,22 +79,24 @@
         app:layout_constraintEnd_toEndOf="@+id/et_user"
         app:layout_constraintTop_toBottomOf="@+id/et_user" />
 
-    <EditText
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/et_password"
         android:layout_width="@dimen/et_field_width"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/awsco_input_ulc"
         android:ems="10"
         android:hint="@string/awsco_password_input_placeholder_txt"
         android:inputType="textPassword"
         android:textColor="@color/awsco_input_txt_color"
+        android:textColorHint="@color/faded_black"
         android:textSize="@dimen/awsco_input_fontsize"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_user_helper" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_user_helper"
+        app:met_floatingLabel="normal"
+        app:met_underlineColor="@color/awsco_input_ulc" />
 
     <TextView
         android:id="@+id/tv_password_helper"

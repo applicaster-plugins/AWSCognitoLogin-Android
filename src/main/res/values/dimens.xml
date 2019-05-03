@@ -5,4 +5,5 @@
     <dimen name="awsco_btn_fontsize">14sp</dimen>
     <dimen name="awsco_link_fontsize">12sp</dimen>
     <dimen name="et_field_width">190dp</dimen>
+    <dimen name="awsco_confirmation_title_fontsize">24sp</dimen>
 </resources>

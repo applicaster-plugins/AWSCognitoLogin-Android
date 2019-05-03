@@ -72,6 +72,8 @@ dependencies {
     } else {
         implementation(applicasterSDKPath)
     }
+
+    implementation 'com.rengwuxian.materialedittext:library:2.1.4'
 }
 
 apply from: 'gradle/gradle-bintray-push.gradle'

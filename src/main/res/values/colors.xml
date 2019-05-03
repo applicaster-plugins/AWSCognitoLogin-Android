@@ -8,4 +8,5 @@
     <color name="awsco_btn_color">#CC1978</color>
     <color name="awsco_btn_br_color">#00000000</color>
     <color name="awsco_link_color">#000000</color>
+    <color name="awsco_confirmation_title_color">#CC1978</color>
 </resources>
