@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="InputStyle">
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/awsco_input_txt_color</item>
+        <item name="android:textColorHint">@color/faded_black</item>
+        <item name="android:textSize">@dimen/awsco_input_fontsize</item>
+    </style>
+</resources>
