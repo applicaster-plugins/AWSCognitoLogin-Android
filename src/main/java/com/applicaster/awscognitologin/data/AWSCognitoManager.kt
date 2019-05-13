@@ -1,13 +1,20 @@
 package com.applicaster.awscognitologin.data
 
 import android.content.Context
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserAttributes
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
 import com.amazonaws.regions.Regions
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 
-class AWSCognitoManager {
+enum class AWSCognitoManager {
+    INSTANCE;
+
+    lateinit var userPool: CognitoUserPool
+    lateinit var cognitoUser: CognitoUser
+
     companion object {
+
         fun getInstance(context: Context): CognitoUserPool {
             val instance = PluginDataRepository.INSTANCE
             return CognitoUserPool(context, instance.getUserPoolId(),

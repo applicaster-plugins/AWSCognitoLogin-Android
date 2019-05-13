@@ -7,14 +7,17 @@ import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
 import com.applicaster.awscognitologin.R
+import com.applicaster.awscognitologin.screens.activate.ActivateAccountActivity
+import com.applicaster.awscognitologin.screens.confirmation.ConfirmationCodeActivity
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : AppCompatActivity(), SignUpView {
 
-    var signUpPresenter: SignUpPresenter
-            = SignUpPresenter(this, SignUpInteractor(this))
+    var signUpPresenter: SignUpPresenter = SignUpPresenter(
+            this, SignUpInteractor())
 
     companion object {
         fun getCallingIntent(@NonNull context: Context): Intent {
@@ -35,7 +38,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
     }
 
     // returns true if all fields are filled
-    private fun validateFields() : Boolean {
+    private fun validateFields(): Boolean {
         // todo: check if username and email are not empty
         // todo: check if password and confirmPassword are equals
         return true
@@ -47,6 +50,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
 
     override fun onUserIsNotConfirmed(cognitoUserCodeDeliveryDetails: CognitoUserCodeDeliveryDetails) {
         Toaster.makeToast(this, "onUserIsNotConfirmed")
+        startActivity(ActivateAccountActivity.getCallingIntent(this))
     }
 
     override fun onSignUpFailed(exception: Exception) {

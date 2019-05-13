@@ -2,6 +2,8 @@ package com.applicaster.awscognitologin
 
 import android.content.Context
 import android.util.Log
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
+import com.applicaster.awscognitologin.data.AWSCognitoManager
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.Constants.Companion.CLIENT_ID
@@ -21,7 +23,10 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback {
 
     override fun login(context: Context?, playable: Playable?, additionalParams: MutableMap<Any?, Any?>?) {
         Log.d(this.javaClass.simpleName, "login with playable")
-        context?.startActivity(SignInActivity.getCallingIntent(context))
+        context?.let {
+            AWSCognitoManager.INSTANCE.userPool = AWSCognitoManager.getInstance(it)
+            it.startActivity(SignInActivity.getCallingIntent(it))
+        }
     }
 
     override fun isItemLocked(model: Any?): Boolean {
