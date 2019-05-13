@@ -2,7 +2,12 @@ package com.applicaster.awscognitologin
 
 import android.content.Context
 import android.util.Log
+import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
+import com.applicaster.awscognitologin.utils.Constants.Companion.CLIENT_ID
+import com.applicaster.awscognitologin.utils.Constants.Companion.CLIENT_SECRET
+import com.applicaster.awscognitologin.utils.Constants.Companion.REGION
+import com.applicaster.awscognitologin.utils.Constants.Companion.USER_POOL_ID
 import com.applicaster.plugin_manager.hook.HookListener
 import com.applicaster.plugin_manager.login.AsyncLoginContract
 import com.applicaster.plugin_manager.login.LoginContract
@@ -49,6 +54,13 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback {
 
     override fun setPluginConfigurationParams(params: MutableMap<Any?, Any?>?) {
         Log.d(this.javaClass.simpleName, "set plugin configuration")
+        val instance = PluginDataRepository.INSTANCE
+        params?.let {
+            instance.setClientId(params[CLIENT_ID].toString())
+            instance.setClientSecret(params[CLIENT_SECRET].toString())
+            instance.setUserPoolId(params[USER_POOL_ID].toString())
+            instance.setRegion(params[REGION].toString())
+        }
     }
 
     override fun handlePluginScheme(context: Context?, data: MutableMap<String, String>?): Boolean {

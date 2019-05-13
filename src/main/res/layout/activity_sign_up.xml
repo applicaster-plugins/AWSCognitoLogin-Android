@@ -5,6 +5,23 @@
     android:layout_height="match_parent"
     android:background="@color/awsco_bc_color">
 
+    <View
+        android:id="@+id/v_progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/faded_black"
+        android:visibility="gone"/>
+
+    <ProgressBar
+        android:id="@+id/pb_progress"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tv_registration_title"
         android:layout_width="wrap_content"
