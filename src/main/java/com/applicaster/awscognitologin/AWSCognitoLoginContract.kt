@@ -29,6 +29,14 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback {
         }
     }
 
+    override fun login(context: Context?, additionalParams: MutableMap<Any?, Any?>?, callback: LoginContract.Callback?) {
+        Log.d(this.javaClass.simpleName, "login with playable")
+        context?.let {
+            AWSCognitoManager.INSTANCE.userPool = AWSCognitoManager.getInstance(it)
+            it.startActivity(SignInActivity.getCallingIntent(it))
+        }
+    }
+
     override fun isItemLocked(model: Any?): Boolean {
         return true
     }

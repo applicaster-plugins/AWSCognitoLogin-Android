@@ -4,10 +4,12 @@ import com.applicaster.awscognitologin.utils.Constants.Companion.CLIENT_ID
 import com.applicaster.awscognitologin.utils.Constants.Companion.CLIENT_SECRET
 import com.applicaster.awscognitologin.utils.Constants.Companion.REGION
 import com.applicaster.awscognitologin.utils.Constants.Companion.USER_POOL_ID
+import com.applicaster.plugin_manager.login.LoginContract
 import com.applicaster.util.PreferenceUtil
 
 enum class PluginDataRepository : PluginRepository {
     INSTANCE {
+
         override fun getUserPoolId(): String {
             return PreferenceUtil.getInstance().getStringPref(USER_POOL_ID, null)
         }

@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
 import com.applicaster.awscognitologin.R
+import com.applicaster.awscognitologin.plugin.PluginDataRepository
+import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_activate_account.*
 import java.lang.Exception
@@ -41,6 +43,8 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
     override fun onActivateAccountSuccess() {
         // todo: play video
         Toaster.makeToast(this, "onActivateAccountSuccess")
+        LoginManager.notifyEvent(this, LoginManager.RequestType.LOGIN, true)
+        finish()
     }
 
     override fun onActivateAccountFail(exception: Exception?) {

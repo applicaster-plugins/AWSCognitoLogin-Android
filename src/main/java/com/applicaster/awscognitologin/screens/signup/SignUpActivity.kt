@@ -9,8 +9,10 @@ import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
 import com.applicaster.awscognitologin.R
+import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.activate.ActivateAccountActivity
 import com.applicaster.awscognitologin.screens.confirmation.ConfirmationCodeActivity
+import com.applicaster.plugin_manager.login.LoginContract
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
@@ -46,11 +48,13 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
 
     override fun onSignUpSuccess() {
         Toaster.makeToast(this, "onSignUpSuccess")
+        finish()
     }
 
     override fun onUserIsNotConfirmed(cognitoUserCodeDeliveryDetails: CognitoUserCodeDeliveryDetails) {
         Toaster.makeToast(this, "onUserIsNotConfirmed")
         startActivity(ActivateAccountActivity.getCallingIntent(this))
+        finish()
     }
 
     override fun onSignUpFailed(exception: Exception) {
