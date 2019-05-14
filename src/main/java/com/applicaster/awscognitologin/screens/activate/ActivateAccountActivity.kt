@@ -6,9 +6,7 @@ import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
 import com.applicaster.awscognitologin.R
-import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_activate_account.*
@@ -53,12 +51,10 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
     }
 
     override fun showProgress() {
-        v_progress.visibility = View.VISIBLE
-        pb_progress.visibility = View.VISIBLE
+        l_progress.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-        v_progress.visibility = View.GONE
-        pb_progress.visibility = View.GONE
+        l_progress.visibility = View.GONE
     }
 }

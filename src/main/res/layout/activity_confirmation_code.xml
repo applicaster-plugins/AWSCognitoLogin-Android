@@ -72,4 +72,9 @@
             android:textColor="@color/awsco_btn_txt_color"
             android:textSize="@dimen/awsco_btn_fontsize" />
     </LinearLayout>
+
+    <include
+        android:id="@+id/l_progress"
+        layout="@layout/layout_progress"
+        android:visibility="gone" />
 </android.support.constraint.ConstraintLayout>
