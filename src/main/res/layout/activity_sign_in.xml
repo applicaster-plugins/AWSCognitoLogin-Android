@@ -10,9 +10,9 @@
         android:id="@+id/iv_logo"
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="55dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -63,9 +63,9 @@
         style="@style/InputStyle"
         android:layout_width="@dimen/et_field_width"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="@string/awsco_password_input_placeholder_txt"
         android:inputType="textPassword"
@@ -102,9 +102,9 @@
         android:id="@+id/btn_sign_in"
         android:layout_width="190dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="60dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/aws_btn_background"
         android:gravity="center"
         android:orientation="horizontal"
@@ -124,9 +124,9 @@
         android:id="@+id/tv_activate_account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/awsco_actacc_txt"
         android:textColor="@color/awsco_link_color"
         android:textSize="@dimen/awsco_link_fontsize"
@@ -161,5 +161,11 @@
             android:textSize="@dimen/awsco_btn_fontsize"
             android:textStyle="bold" />
     </LinearLayout>
+
+
+    <include
+        android:id="@+id/l_progress"
+        layout="@layout/layout_progress"
+        android:visibility="gone" />
 
 </android.support.constraint.ConstraintLayout>
