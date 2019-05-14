@@ -19,4 +19,9 @@
     <string name="send_code">Send Code</string>
     <string name="confirmation_code_title">Confirmation Code</string>
     <string name="sign_in">Sign In</string>
+    <string name="awsco_forgot_pwd_title_txt">Forgot Password</string>
+    <string name="awsco_forgot_pwd_desc_txt">Enter the username used for registration</string>
+    <string name="awsco_update_pwd_title_txt">Update Password</string>
+    <string name="awsco_update_pwd_desc_txt">Enter the code sent to your email and update your password</string>
+    <string name="awsco_update_pwd_btn_txt">Update Password</string>
 </resources>

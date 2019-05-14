@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.screens.confirmation.ConfirmationCodeActivity
+import com.applicaster.awscognitologin.screens.forgot.ForgotPasswordActivity
 import com.applicaster.awscognitologin.screens.signup.SignUpActivity
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
@@ -41,6 +42,10 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
         btn_sign_up.setOnClickListener {
             startActivity(SignUpActivity.getCallingIntent(this))
+        }
+
+        tv_forgot_password.setOnClickListener {
+            startActivity(ForgotPasswordActivity.getCallingIntent(this))
         }
     }
 

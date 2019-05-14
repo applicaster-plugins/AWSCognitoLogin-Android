@@ -12,5 +12,6 @@
         <activity android:name=".screens.signup.SignUpActivity" />
         <activity android:name=".screens.confirmation.ConfirmationCodeActivity" />
         <activity android:name=".screens.activate.ActivateAccountActivity" />
+        <activity android:name=".screens.forgot.ForgotPasswordActivity" />
     </application>
 </manifest>
