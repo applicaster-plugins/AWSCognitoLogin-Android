@@ -4,6 +4,7 @@ import android.content.Context
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserAttributes
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
+import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserSession
 import com.amazonaws.regions.Regions
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 
@@ -12,9 +13,9 @@ enum class AWSCognitoManager {
 
     var userPool: CognitoUserPool? = null
     var cognitoUser: CognitoUser? = null
+    var cognitoUserSession: CognitoUserSession? = null
 
     companion object {
-
         fun getInstance(context: Context): CognitoUserPool {
             val instance = PluginDataRepository.INSTANCE
             return CognitoUserPool(context, instance.getUserPoolId(),
@@ -33,5 +34,11 @@ enum class AWSCognitoManager {
             userAttributes.addAttribute("email", email)
             return userAttributes
         }
+    }
+
+    fun clear() {
+        userPool = null
+        cognitoUser = null
+        cognitoUserSession = null
     }
 }

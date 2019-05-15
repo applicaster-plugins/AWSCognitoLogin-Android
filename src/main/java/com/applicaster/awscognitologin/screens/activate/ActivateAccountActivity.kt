@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
 import android.view.View
+import android.widget.Toast
 import com.applicaster.awscognitologin.R
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
@@ -34,6 +35,7 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
                 activateAccountPresenter.activateAccount(et_code_aa.text.toString())
             } else {
                 // todo: show error
+                Toaster.makeToast(this, "An error ocurred")
             }
         }
     }

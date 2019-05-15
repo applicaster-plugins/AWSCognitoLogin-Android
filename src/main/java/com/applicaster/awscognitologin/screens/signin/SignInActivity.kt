@@ -37,16 +37,21 @@ class SignInActivity : AppCompatActivity(), SignInView {
         }
 
         tv_activate_account.setOnClickListener {
-            startActivity(ConfirmationCodeActivity.getCallingIntent(this))
+            goTo(ConfirmationCodeActivity.getCallingIntent(this))
         }
 
         btn_sign_up.setOnClickListener {
-            startActivity(SignUpActivity.getCallingIntent(this))
+            goTo(SignUpActivity.getCallingIntent(this))
         }
 
         tv_forgot_password.setOnClickListener {
-            startActivity(ForgotPasswordActivity.getCallingIntent(this))
+            goTo(ForgotPasswordActivity.getCallingIntent(this))
         }
+    }
+
+    fun goTo(intent: Intent) {
+        startActivity(intent)
+        finish()
     }
 
     override fun onSignInSuccess() {

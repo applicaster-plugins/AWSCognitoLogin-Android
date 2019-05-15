@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.ForgotPasswordContinuation
 import com.applicaster.awscognitologin.R
+import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 
@@ -70,6 +71,7 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
         builder.setMessage(message)
         builder.setPositiveButton(positiveBtnText) { _, _ ->
             // todo: figure out how to put this in a separate method
+            startActivity(SignInActivity.getCallingIntent(this))
             finish()
         }
 

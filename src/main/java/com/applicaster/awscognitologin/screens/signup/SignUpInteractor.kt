@@ -4,11 +4,15 @@ import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.SignUpHan
 import com.applicaster.awscognitologin.data.AWSCognitoManager
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser
+import com.applicaster.awscognitologin.plugin.PluginDataRepository
+import com.applicaster.plugin_manager.Plugin
 
 
 class SignUpInteractor {
 
     lateinit var listener: OnSignUpFinishedListener
+    lateinit var username: String
+    lateinit var password: String
 
     interface OnSignUpFinishedListener {
         fun onSignUpSuccess(userIsConfirmed: Boolean,
@@ -19,6 +23,8 @@ class SignUpInteractor {
 
     fun signUp(username: String, email: String, password: String, listener: OnSignUpFinishedListener) {
         this.listener = listener
+        this.username = username
+        this.password = password
         val userAttributes = AWSCognitoManager.getUserAttributes(email)
         AWSCognitoManager.INSTANCE.userPool?.signUpInBackground(username, password, userAttributes, null, signupCallback)
     }
@@ -27,6 +33,9 @@ class SignUpInteractor {
         override fun onSuccess(cognitoUser: CognitoUser, userConfirmed: Boolean,
                                cognitoUserCodeDeliveryDetails: CognitoUserCodeDeliveryDetails) {
             AWSCognitoManager.INSTANCE.cognitoUser = cognitoUser
+            // in this step we save username and password
+            // in activation step we save the jwtToken
+            PluginDataRepository.INSTANCE.updateCredentials(username, password)
             listener.onSignUpSuccess(userConfirmed, cognitoUserCodeDeliveryDetails)
         }
 

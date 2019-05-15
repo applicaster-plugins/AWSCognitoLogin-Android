@@ -6,17 +6,23 @@ import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
 import com.applicaster.awscognitologin.data.AWSCognitoManager
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
+import com.applicaster.awscognitologin.screens.signin.SignInInteractor
 import com.applicaster.awscognitologin.utils.Constants.Companion.CLIENT_ID
 import com.applicaster.awscognitologin.utils.Constants.Companion.CLIENT_SECRET
 import com.applicaster.awscognitologin.utils.Constants.Companion.REGION
+import com.applicaster.awscognitologin.utils.Constants.Companion.TOKEN
 import com.applicaster.awscognitologin.utils.Constants.Companion.USER_POOL_ID
+import com.applicaster.plugin_manager.Plugin
 import com.applicaster.plugin_manager.hook.HookListener
 import com.applicaster.plugin_manager.login.AsyncLoginContract
 import com.applicaster.plugin_manager.login.LoginContract
+import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.plugin_manager.playersmanager.Playable
+import com.applicaster.util.PreferenceUtil
 import com.applicaster.util.ui.Toaster
 
-class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback {
+class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback, SignInInteractor.OnSignInFinishedListener {
+    var context: Context? = null
 
     override fun login(context: Context?, additionalParams: MutableMap<Any?, Any?>?) {
         Log.d(this.javaClass.simpleName, "login")
@@ -24,38 +30,61 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback {
 
     override fun login(context: Context?, playable: Playable?, additionalParams: MutableMap<Any?, Any?>?) {
         Log.d(this.javaClass.simpleName, "login with playable")
+        this.context = context
         context?.let {
-            AWSCognitoManager.INSTANCE.userPool = AWSCognitoManager.getInstance(it)
-            it.startActivity(SignInActivity.getCallingIntent(it))
+            AWSCognitoManager.INSTANCE.userPool = AWSCognitoManager.getInstance(context)
+            if (PluginDataRepository.INSTANCE.isUserAlreadyLoggedIn()) {
+                // login
+                SignInInteractor().signIn(PluginDataRepository.INSTANCE.getUsername(),
+                        PluginDataRepository.INSTANCE.getPassword(),
+                        this)
+            } else {
+                // if user is not logged in already launch LoginActivity
+                launchLoginActivity(context)
+            }
         }
+
     }
 
-    override fun login(context: Context?, additionalParams: MutableMap<Any?, Any?>?, callback: LoginContract.Callback?) {
-        Log.d(this.javaClass.simpleName, "login with playable")
-        context?.let {
-            AWSCognitoManager.INSTANCE.userPool = AWSCognitoManager.getInstance(it)
-            it.startActivity(SignInActivity.getCallingIntent(it))
-        }
+    // region response from login
+    override fun onSignInSuccess() {
+        LoginManager.notifyEvent(context, LoginManager.RequestType.LOGIN, true)
+    }
+
+    override fun onSignInFail(error: String) {
+        Toaster.makeToast(context, "onSignInFail")
+        launchLoginActivity(context)
+    }
+    // endregion
+
+    private fun launchLoginActivity(context: Context?) {
+        context?.startActivity(SignInActivity.getCallingIntent(context))
     }
 
     override fun isItemLocked(model: Any?): Boolean {
+        // todo: check if model.isFree()
         return true
     }
 
     override fun isItemLocked(context: Context?, model: Any?, callback: LoginContract.Callback?) {
-
+        // do nothing?
     }
 
     override fun onResult(result: Boolean) {
-
+        // do nothing?
     }
 
     override fun isTokenValid(): Boolean {
+        // todo: check with javi for once and all how this actually have to work
+        if (PluginDataRepository.INSTANCE.getToken() != null) {
+            return true
+        }
         return false
     }
 
     override fun setToken(token: String?) {
-
+        // todo: check with javi for once and all how this actually have to work
+        PluginDataRepository.INSTANCE.setToken(token)
     }
 
     override fun executeOnStartup(context: Context?, listener: HookListener?) {
@@ -63,6 +92,8 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback {
     }
 
     override fun getToken(): String {
+        val token = PluginDataRepository.INSTANCE.getToken()
+        token?.let { return token }
         return ""
     }
 
@@ -84,6 +115,7 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback {
                     AWSCognitoManager.INSTANCE.userPool?.let { userPool ->
                         userPool.user?.signOut()
                         AWSCognitoManager.INSTANCE.userPool = null
+                        PluginDataRepository.INSTANCE.clearCredentials()
                         Toaster.makeToast(context, "User signed out")
                         return true
                     }

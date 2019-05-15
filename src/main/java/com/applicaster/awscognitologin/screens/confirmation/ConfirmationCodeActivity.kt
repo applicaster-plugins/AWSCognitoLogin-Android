@@ -34,6 +34,7 @@ class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
 
     override fun onConfirmationCodeSuccess() {
         startActivity(ActivateAccountActivity.getCallingIntent(this))
+        finish()
     }
 
     override fun onConfirmationCodeFail(error: String) {
