@@ -24,4 +24,7 @@
     <string name="awsco_update_pwd_title_txt">Update Password</string>
     <string name="awsco_update_pwd_desc_txt">Enter the code sent to your email and update your password</string>
     <string name="awsco_update_pwd_btn_txt">Update Password</string>
+    <string name="dialog_title">Update password complete</string>
+    <string name="dialog_description">Your password has been reset. Please, login now with your new credentials.</string>
+    <string name="dialog_positive_button_txt">OK</string>
 </resources>

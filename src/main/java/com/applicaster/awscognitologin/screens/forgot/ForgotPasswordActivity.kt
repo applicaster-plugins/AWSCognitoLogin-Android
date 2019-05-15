@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.NonNull
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.ForgotPasswordContinuation
@@ -57,8 +58,22 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
     }
 
     override fun onForgotPasswordSuccess() {
-        // sign in activity is already behind
-        finish()
+        getAlertDialog(this, resources.getString(R.string.dialog_title),
+                resources.getString(R.string.dialog_description),
+                resources.getString(R.string.dialog_positive_button_txt)).show()
+    }
+
+    fun getAlertDialog(context: Context, title: String, message: String,
+                       positiveBtnText: String) : AlertDialog {
+        val builder = AlertDialog.Builder(context)
+        builder.setTitle(title)
+        builder.setMessage(message)
+        builder.setPositiveButton(positiveBtnText) { _, _ ->
+            // todo: figure out how to put this in a separate method
+            finish()
+        }
+
+        return builder.create()
     }
 
     override fun onForgotPasswordFail(error: String) {
