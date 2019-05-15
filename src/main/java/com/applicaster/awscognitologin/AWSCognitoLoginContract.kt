@@ -14,6 +14,7 @@ import com.applicaster.plugin_manager.hook.HookListener
 import com.applicaster.plugin_manager.login.AsyncLoginContract
 import com.applicaster.plugin_manager.login.LoginContract
 import com.applicaster.plugin_manager.playersmanager.Playable
+import com.applicaster.util.ui.Toaster
 
 class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback {
 
@@ -77,7 +78,21 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback {
     }
 
     override fun handlePluginScheme(context: Context?, data: MutableMap<String, String>?): Boolean {
-        return true
+        data?.let {
+            if (it["type"].equals("login")) {
+                if (it["action"].equals("logout")) {
+                    AWSCognitoManager.INSTANCE.userPool?.let { userPool ->
+                        userPool.user?.signOut()
+                        AWSCognitoManager.INSTANCE.userPool = null
+                        Toaster.makeToast(context, "User signed out")
+                        return true
+                    }
+
+                    Toaster.makeToast(context, "User not signed in")
+                }
+            }
+        }
+        return false
     }
 
     override fun executeOnApplicationReady(context: Context?, listener: HookListener?) {

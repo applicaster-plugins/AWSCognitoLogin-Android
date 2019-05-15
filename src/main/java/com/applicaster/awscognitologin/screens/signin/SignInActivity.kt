@@ -51,6 +51,7 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
     override fun onSignInSuccess() {
         LoginManager.notifyEvent(this, LoginManager.RequestType.LOGIN, true)
+        finish()
     }
 
     override fun onSignInFail(message: String) {

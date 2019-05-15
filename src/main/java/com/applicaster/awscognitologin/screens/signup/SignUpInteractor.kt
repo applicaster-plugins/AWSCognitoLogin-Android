@@ -20,7 +20,7 @@ class SignUpInteractor {
     fun signUp(username: String, email: String, password: String, listener: OnSignUpFinishedListener) {
         this.listener = listener
         val userAttributes = AWSCognitoManager.getUserAttributes(email)
-        AWSCognitoManager.INSTANCE.userPool.signUpInBackground(username, password, userAttributes, null, signupCallback)
+        AWSCognitoManager.INSTANCE.userPool?.signUpInBackground(username, password, userAttributes, null, signupCallback)
     }
 
     private var signupCallback: SignUpHandler = object : SignUpHandler {

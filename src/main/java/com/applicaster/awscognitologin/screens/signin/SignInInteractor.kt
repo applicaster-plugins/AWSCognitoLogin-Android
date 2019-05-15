@@ -25,7 +25,7 @@ class SignInInteractor {
         this.listener = listener
         this.password = password
 
-        AWSCognitoManager.INSTANCE.userPool.getUser(username).getSessionInBackground(authenticationHandler)
+        AWSCognitoManager.INSTANCE.userPool?.getUser(username)?.getSessionInBackground(authenticationHandler)
     }
 
     // Callback handler for the sign-in process

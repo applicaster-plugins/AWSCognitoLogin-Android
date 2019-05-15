@@ -16,7 +16,7 @@ class ActivateAccountInteractor() {
     fun activateAccount(confirmationCode: String, listener: OnActivateAccountFinishedListener) {
         this.listener = listener
         // the alias creation is not forced
-        AWSCognitoManager.INSTANCE.cognitoUser.confirmSignUpInBackground(confirmationCode, false,
+        AWSCognitoManager.INSTANCE.cognitoUser?.confirmSignUpInBackground(confirmationCode, false,
                 confirmationCallback)
     }
 

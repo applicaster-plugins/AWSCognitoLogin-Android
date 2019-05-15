@@ -17,8 +17,8 @@ class ConfirmationCodeInteractor {
     fun sendActivationCode(username: String, listener: OnConfirmationCodeFinishedListener) {
         this.listener = listener
 
-        AWSCognitoManager.INSTANCE.userPool.getUser(username)
-                .resendConfirmationCodeInBackground(confirmationCodeHandler)
+        AWSCognitoManager.INSTANCE.userPool?.getUser(username)
+                ?.resendConfirmationCodeInBackground(confirmationCodeHandler)
     }
 
     private var confirmationCodeHandler: VerificationHandler = object : VerificationHandler {

@@ -18,7 +18,7 @@ class ForgotPasswordInteractor {
     fun forgotPassword(username: String, listener: OnForgotPasswordFinishedListener) {
         this.listener = listener
 
-        AWSCognitoManager.INSTANCE.userPool.getUser(username).forgotPasswordInBackground(forgotPasswordHandler)
+        AWSCognitoManager.INSTANCE.userPool?.getUser(username)?.forgotPasswordInBackground(forgotPasswordHandler)
     }
 
     private var forgotPasswordHandler: ForgotPasswordHandler = object : ForgotPasswordHandler {

@@ -10,8 +10,8 @@ import com.applicaster.awscognitologin.plugin.PluginDataRepository
 enum class AWSCognitoManager {
     INSTANCE;
 
-    lateinit var userPool: CognitoUserPool
-    lateinit var cognitoUser: CognitoUser
+    var userPool: CognitoUserPool? = null
+    var cognitoUser: CognitoUser? = null
 
     companion object {
 
