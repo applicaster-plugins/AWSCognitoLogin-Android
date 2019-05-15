@@ -1,6 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.applicaster.awscognitologin">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
@@ -9,5 +12,6 @@
         <activity android:name=".screens.signup.SignUpActivity" />
         <activity android:name=".screens.confirmation.ConfirmationCodeActivity" />
         <activity android:name=".screens.activate.ActivateAccountActivity" />
+        <activity android:name=".screens.forgot.ForgotPasswordActivity" />
     </application>
 </manifest>
