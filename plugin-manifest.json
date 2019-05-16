@@ -66,6 +66,7 @@
       "tooltip_text": "Erase button color",
       "type": "colorpicker"
       },
+      // input field style
       {
       "key": "awsco_input_ulc",
       "tooltip_text": "Underline Color",
@@ -91,6 +92,7 @@
       "tooltip_text": "Validation Text Color",
       "type": "colorpicker"
       },
+      // end of input field style
       {
       "key": "awsco_user_input_placeholder_txt",
       "tooltip_text": "Placeholder Text for user",
@@ -121,6 +123,7 @@
       "tooltip_text": "Placeholder Text for new password",
       "type": "text"
       },
+      // button style
       {
       "key": "awsco_btn_txt_color",
       "tooltip_text": "Button Text Color",
@@ -141,6 +144,8 @@
       "tooltip_text": "Button Border Color",
       "type": "colorpicker"
       },
+      // end of button style
+      // link style
       {
       "key": "awsco_link_color",
       "tooltip_text": "Link Color",
@@ -151,6 +156,7 @@
       "tooltip_text": "Link Font Size",
       "type": "text"
       },
+      // end of link style
       {
       "key": "awsco_forpas_txt",
       "tooltip_text": "Forgot Password Text",
@@ -192,18 +198,28 @@
       "type": "colorpicker"
       },
       {
-      "key": "awsco_view_title_text",
+      "key": "awsco_signin_title_text",
       "tooltip_text": "Login Screen Title Text",
       "type": "text"
       },
       {
       "key": "awsco_view_title_color",
-      "tooltip_text": "Login Screen Title Color",
+      "tooltip_text": "Title Color",
       "type": "colorpicker"
       },
       {
       "key": "awsco_view_title_fontsize",
-      "tooltip_text": "Login Screen Title Font Size",
+      "tooltip_text": "Title Font Size",
+      "type": "text"
+      },
+      {
+      "key": "awsco_view_desc_txt_color",
+      "tooltip_text": "Title Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_view_desc_txt_fontsize",
+      "tooltip_text": "Title Font Size",
       "type": "text"
       },
       {
@@ -217,33 +233,8 @@
       "type": "text"
       },
       {
-      "key": "awsco_confirmation_title_color",
-      "tooltip_text": "Confirmation Screen Title Color",
-      "type": "colorpicker"
-      },
-      {
-      "key": "awsco_confirmation_title_fontsize",
-      "tooltip_text": "Confirmation Screen Title Font Size",
-      "type": "text"
-      },
-      {
       "key": "awsco_confirmation_desc_txt",
       "tooltip_text": "Confirmation Screen Description Text",
-      "type": "text"
-      },
-      {
-      "key": "awsco_confirmation_desc_txt_color",
-      "tooltip_text": "Confirmation Screen Description Text Color",
-      "type": "colorpicker"
-      },
-      {
-      "key": "awsco_confirmation_desc_txt_fontsize",
-      "tooltip_text": "Confirmation Screen Description Font Size",
-      "type": "text"
-      },
-      {
-      "key": "awsco_confirmation_send_code_btn_txt",
-      "tooltip_text": "Confirmation Screen Send Code Button Text",
       "type": "text"
       },
       {
@@ -252,28 +243,8 @@
       "type": "text"
       },
       {
-      "key": "awsco_activation_code_title_color",
-      "tooltip_text": "Activation Screen Title Text Color",
-      "type": "colorpicker"
-      },
-      {
-      "key": "awsco_activation_code_title_fontsize",
-      "tooltip_text": "Activation Screen Title Font Size",
-      "type": "text"
-      },
-      {
       "key": "awsco_activation_code_desc_txt",
       "tooltip_text": "Activation Screen Description Text",
-      "type": "text"
-      },
-      {
-      "key": "awsco_activation_code_desc_txt_color",
-      "tooltip_text": "Activation Screen Description Text Color",
-      "type": "colorpicker"
-      },
-      {
-      "key": "awsco_activation_code_desc_txt_fontsize",
-      "tooltip_text": "Activation Screen Description Font Size",
       "type": "text"
       },
       {
@@ -292,16 +263,6 @@
       "type": "text"
       },
       {
-      "key": "awsco_registration_code_title_color",
-      "tooltip_text": "Registration Screen Title Color",
-      "type": "colorpicker"
-      },
-      {
-      "key": "awsco_registration_code_title_fontsize",
-      "tooltip_text": "Registration Screen Title Font Size",
-      "type": "text"
-      },
-      {
       "key": "awsco_registration_sign_up_btn_txt",
       "tooltip_text": "Registration Sign Up Button Text",
       "type": "text"
@@ -312,28 +273,8 @@
       "type": "text"
       },
       {
-      "key": "awsco_forgot_pwd_title_color",
-      "tooltip_text": "Forgot Password Screen Title Color",
-      "type": "colorpicker"
-      },
-      {
-      "key": "awsco_forgot_pwd_title_fontsize",
-      "tooltip_text": "Forgot Password Screen Title Font Size",
-      "type": "text"
-      },
-      {
       "key": "awsco_forgot_pwd_desc_txt",
       "tooltip_text": "Forgot Password Screen Description Text",
-      "type": "text"
-      },
-      {
-      "key": "awsco_forgot_pwd_desc_color",
-      "tooltip_text": "Forgot Password Screen Description Color",
-      "type": "colorpicker"
-      },
-      {
-      "key": "awsco_forgot_pwd_desc_fontsize",
-      "tooltip_text": "Forgot Password Screen Description Font Size",
       "type": "text"
       },
       {
@@ -347,28 +288,8 @@
       "type": "text"
       },
       {
-      "key": "awsco_update_pwd_title_color",
-      "tooltip_text": "Update Password Screen Title Color",
-      "type": "colorpicker"
-      },
-      {
-      "key": "awsco_update_pwd_title_fontsize",
-      "tooltip_text": "Update Password Screen Title Font Size",
-      "type": "text"
-      },
-      {
       "key": "awsco_update_pwd_desc_txt",
       "tooltip_text": "Update Password Screen Description Text",
-      "type": "text"
-      },
-      {
-      "key": "awsco_update_pwd_desc_color",
-      "tooltip_text": "Update Password Screen Description Color",
-      "type": "colorpicker"
-      },
-      {
-      "key": "awsco_update_pwd_desc_fontsize",
-      "tooltip_text": "Update Password Screen Description Font Size",
       "type": "text"
       },
       {
