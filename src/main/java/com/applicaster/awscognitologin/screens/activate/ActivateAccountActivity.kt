@@ -30,13 +30,7 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
 
         setContentView(R.layout.activity_activate_account)
 
-        UIUtils.applyTitleStyle(tv_activate_account_title)
-
-        UIUtils.applyDescriptionStyle(tv_activate_account_description)
-
-        UIUtils.applyInputStyle(et_code_aa)
-
-        UIUtils.applyButtonStyle(btn_activate, tv_activate_btn)
+        applyStyles()
 
         btn_activate.setOnClickListener {
             if(et_code_aa.text.isNotEmpty()) {
@@ -46,6 +40,18 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
                 Toaster.makeToast(this, "An error ocurred")
             }
         }
+    }
+
+    private fun applyStyles() {
+        UIUtils.applyTitleStyle(tv_activate_account_title)
+
+        UIUtils.applyDescriptionStyle(tv_activate_account_description)
+
+        UIUtils.applyInputStyle(et_code_aa)
+
+        UIUtils.applyButtonStyle(btn_activate, tv_activate_btn)
+
+        UIUtils.applyLinkStyle(tv_resend_code)
     }
 
     override fun onActivateAccountSuccess() {

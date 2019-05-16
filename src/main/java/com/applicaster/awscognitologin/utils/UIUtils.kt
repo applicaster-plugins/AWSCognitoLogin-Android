@@ -41,7 +41,7 @@ class UIUtils {
             params?.let {
                 val drawable = button.background
 
-                if(drawable is GradientDrawable) {
+                if (drawable is GradientDrawable) {
                     drawable.setColor(Color.parseColor(params["awsco_btn_color"].toString()))
                     drawable.setStroke(1, Color.parseColor(params["awsco_btn_br_color"].toString()))
                 }
@@ -57,6 +57,13 @@ class UIUtils {
 
                 buttonText2.textSize = params["awsco_btn_fontsize"].toString().toFloat()
                 buttonText2.setTextColor(Color.parseColor(params["awsco_btn_txt_color"].toString()))
+            }
+        }
+
+        fun applyLinkStyle(link: TextView) {
+            params?.let {
+                link.textSize = params["awsco_link_fontsize"].toString().toFloat()
+                link.setTextColor(Color.parseColor(params["awsco_link_color"].toString()))
             }
         }
     }

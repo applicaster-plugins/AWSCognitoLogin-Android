@@ -32,13 +32,7 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
         setContentView(R.layout.activity_sign_in)
 
-        UIUtils.applyTitleStyle(tv_sign_in_title)
-
-        UIUtils.applyInputStyle(et_user)
-        UIUtils.applyInputStyle(et_password)
-
-        UIUtils.applyButtonStyle(btn_sign_in, tv_sign_in_btn)
-        UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_question_btn, tv_sign_up_answer_btn)
+        applyStyles()
 
         btn_sign_in.setOnClickListener {
             // todo: check if fields are not empty
@@ -56,6 +50,19 @@ class SignInActivity : AppCompatActivity(), SignInView {
         tv_forgot_password.setOnClickListener {
             goTo(ForgotPasswordActivity.getCallingIntent(this))
         }
+    }
+
+    private fun applyStyles() {
+        UIUtils.applyTitleStyle(tv_sign_in_title)
+
+        UIUtils.applyInputStyle(et_user)
+        UIUtils.applyInputStyle(et_password)
+
+        UIUtils.applyButtonStyle(btn_sign_in, tv_sign_in_btn)
+        UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_question_btn, tv_sign_up_answer_btn)
+
+        UIUtils.applyLinkStyle(tv_forgot_password)
+        UIUtils.applyLinkStyle(tv_activate_account)
     }
 
     fun goTo(intent: Intent) {

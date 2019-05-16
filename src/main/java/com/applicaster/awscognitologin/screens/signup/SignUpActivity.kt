@@ -30,14 +30,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
 
         setContentView(R.layout.activity_sign_up)
 
-        UIUtils.applyTitleStyle(tv_registration_title)
-
-        UIUtils.applyInputStyle(et_username_su)
-        UIUtils.applyInputStyle(et_email_su)
-        UIUtils.applyInputStyle(et_password_su)
-        UIUtils.applyInputStyle(et_confirm_password_su)
-
-        UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_btn)
+        applyStyles()
 
         btn_sign_up.setOnClickListener {
             if (validateFields()) {
@@ -46,6 +39,17 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
                         et_password_su.text.toString())
             }
         }
+    }
+
+    private fun applyStyles() {
+        UIUtils.applyTitleStyle(tv_registration_title)
+
+        UIUtils.applyInputStyle(et_username_su)
+        UIUtils.applyInputStyle(et_email_su)
+        UIUtils.applyInputStyle(et_password_su)
+        UIUtils.applyInputStyle(et_confirm_password_su)
+
+        UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_btn)
     }
 
     // returns true if all fields are filled

@@ -34,15 +34,7 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
 
         setContentView(R.layout.activity_forgot_password)
 
-        UIUtils.applyTitleStyle(tv_forgot_password_title)
-
-        UIUtils.applyDescriptionStyle(tv_forgot_password_description)
-
-        UIUtils.applyInputStyle(et_username_fp)
-        UIUtils.applyInputStyle(et_code_fp)
-        UIUtils.applyInputStyle(et_new_password_fp)
-
-        UIUtils.applyButtonStyle(btn_forgot_password, tv_forgot_password_btn)
+        applyStyles()
 
         btn_forgot_password.setOnClickListener {
             // todo: check if edit texts is empty
@@ -54,6 +46,18 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
                 forgotPasswordPresenter.forgotPassword(et_username_fp.text.toString())
             }
         }
+    }
+
+    private fun applyStyles() {
+        UIUtils.applyTitleStyle(tv_forgot_password_title)
+
+        UIUtils.applyDescriptionStyle(tv_forgot_password_description)
+
+        UIUtils.applyInputStyle(et_username_fp)
+        UIUtils.applyInputStyle(et_code_fp)
+        UIUtils.applyInputStyle(et_new_password_fp)
+
+        UIUtils.applyButtonStyle(btn_forgot_password, tv_forgot_password_btn)
     }
 
     override fun onForgotPasswordContinuation(continuation: ForgotPasswordContinuation) {
