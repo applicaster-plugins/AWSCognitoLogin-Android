@@ -46,7 +46,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
     }
 
     private fun setTexts() {
-        UIUtils.setText(tv_forgot_password_title, "awsco_registration_code_title_txt")
+        UIUtils.setText(tv_registration_title, "awsco_registration_code_title_txt")
         UIUtils.setText(et_username_su, "awsco_user_input_placeholder_txt")
         UIUtils.setText(et_email_su, "awsco_email_input_placeholder_txt")
         UIUtils.setText(et_password_su, "awsco_password_input_placeholder_txt")

@@ -79,8 +79,8 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
                 resources.getString(R.string.dialog_positive_button_txt)).show()
     }
 
-    fun getAlertDialog(context: Context, title: String, message: String,
-                       positiveBtnText: String) : AlertDialog {
+    private fun getAlertDialog(context: Context, title: String, message: String,
+                               positiveBtnText: String) : AlertDialog {
         val builder = AlertDialog.Builder(context)
         builder.setTitle(title)
         builder.setMessage(message)
@@ -103,5 +103,10 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
 
     override fun hideProgress() {
         l_progress.visibility = View.GONE
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity(SignInActivity.getCallingIntent(this))
     }
 }
