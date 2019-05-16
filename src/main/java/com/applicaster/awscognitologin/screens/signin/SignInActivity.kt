@@ -34,6 +34,8 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
         applyStyles()
 
+        setTexts()
+
         btn_sign_in.setOnClickListener {
             // todo: check if fields are not empty
             signInPresenter.signIn(et_user.text.toString(), et_password.text.toString())
@@ -50,6 +52,17 @@ class SignInActivity : AppCompatActivity(), SignInView {
         tv_forgot_password.setOnClickListener {
             goTo(ForgotPasswordActivity.getCallingIntent(this))
         }
+    }
+
+    private fun setTexts() {
+        UIUtils.setText(tv_sign_in_title, "awsco_signin_title_text")
+        UIUtils.setText(et_user, "awsco_user_input_placeholder_txt")
+        UIUtils.setText(et_password, "awsco_password_input_placeholder_txt")
+        UIUtils.setText(tv_forgot_password, "awsco_forpas_txt")
+        UIUtils.setText(tv_activate_account, "awsco_actacc_txt")
+        UIUtils.setText(tv_sign_up_question_btn, "awsco_signup_btn_qt_txt")
+        UIUtils.setText(tv_sign_up_answer_btn, "awsco_signup_btn_answ_text")
+
     }
 
     private fun applyStyles() {

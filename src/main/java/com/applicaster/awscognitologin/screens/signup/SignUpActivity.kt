@@ -12,7 +12,9 @@ import com.applicaster.awscognitologin.screens.activate.ActivateAccountActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
+import kotlinx.android.synthetic.main.activity_forgot_password.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.activity_sign_up.l_progress
 
 class SignUpActivity : AppCompatActivity(), SignUpView {
 
@@ -32,6 +34,8 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
 
         applyStyles()
 
+        setTexts()
+
         btn_sign_up.setOnClickListener {
             if (validateFields()) {
                 signUpPresenter.signUp(et_username_su.text.toString(),
@@ -39,6 +43,15 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
                         et_password_su.text.toString())
             }
         }
+    }
+
+    private fun setTexts() {
+        UIUtils.setText(tv_forgot_password_title, "awsco_registration_code_title_txt")
+        UIUtils.setText(et_username_su, "awsco_user_input_placeholder_txt")
+        UIUtils.setText(et_email_su, "awsco_email_input_placeholder_txt")
+        UIUtils.setText(et_password_su, "awsco_password_input_placeholder_txt")
+        UIUtils.setText(et_confirm_password_su, "awsco_password_confirmation_input_placeholder_txt")
+        UIUtils.setText(tv_sign_up_btn, "awsco_registration_sign_up_btn_txt")
     }
 
     private fun applyStyles() {

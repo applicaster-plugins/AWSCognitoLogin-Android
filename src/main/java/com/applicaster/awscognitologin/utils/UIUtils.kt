@@ -66,5 +66,17 @@ class UIUtils {
                 link.setTextColor(Color.parseColor(params["awsco_link_color"].toString()))
             }
         }
+
+        fun setText(textView: TextView, textKey: String) {
+            params?.let {
+                textView.text = params[textKey].toString()
+            }
+        }
+
+        fun setText(editText: MaterialEditText, hintTextKey: String) {
+            params?.let {
+                editText.hint = params[hintTextKey].toString()
+            }
+        }
     }
 }
