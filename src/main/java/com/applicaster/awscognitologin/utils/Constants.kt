@@ -10,5 +10,6 @@ class Constants {
         const val CLIENT_SECRET: String = "clientSecret"
         const val REGION: String = "Region"
         const val USER_POOL_ID: String = "userpoolid"
+
     }
 }

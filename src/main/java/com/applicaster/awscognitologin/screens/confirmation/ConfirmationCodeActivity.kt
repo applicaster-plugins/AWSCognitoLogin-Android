@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.screens.activate.ActivateAccountActivity
+import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_confirmation_code.*
 
@@ -26,6 +27,8 @@ class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_confirmation_code)
+
+        UIUtils.applyInputStyle(et_username_cc)
 
         btn_send_code.setOnClickListener {
             confirmationCodePresenter.sendConfirmationCode(et_username_cc.text.toString())

@@ -10,6 +10,7 @@ import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.ForgotPasswordContinuation
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
+import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 
@@ -32,6 +33,10 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_forgot_password)
+
+        UIUtils.applyInputStyle(et_username_fp)
+        UIUtils.applyInputStyle(et_code_fp)
+        UIUtils.applyInputStyle(et_new_password_fp)
 
         btn_forgot_password.setOnClickListener {
             // todo: check if edit texts is empty

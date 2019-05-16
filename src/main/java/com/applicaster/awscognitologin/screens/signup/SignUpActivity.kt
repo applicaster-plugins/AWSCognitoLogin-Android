@@ -9,6 +9,8 @@ import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.screens.activate.ActivateAccountActivity
+import com.applicaster.awscognitologin.utils.UIUtils
+import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
@@ -25,7 +27,14 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_sign_up)
+
+        UIUtils.applyInputStyle(et_username_su)
+        UIUtils.applyInputStyle(et_email_su)
+        UIUtils.applyInputStyle(et_password_su)
+        UIUtils.applyInputStyle(et_confirm_password_su)
+
         btn_sign_up.setOnClickListener {
             if (validateFields()) {
                 signUpPresenter.signUp(et_username_su.text.toString(),
@@ -43,7 +52,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
     }
 
     override fun onSignUpSuccess() {
-        Toaster.makeToast(this, "onSignUpSuccess")
+        LoginManager.notifyEvent(this, LoginManager.RequestType.LOGIN, true)
         finish()
     }
 

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.applicaster.awscognitologin.R
+import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_activate_account.*
@@ -29,6 +30,8 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_activate_account)
+
+        UIUtils.applyInputStyle(et_code_aa)
 
         btn_activate.setOnClickListener {
             if(et_code_aa.text.isNotEmpty()) {

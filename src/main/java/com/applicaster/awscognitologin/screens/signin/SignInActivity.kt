@@ -10,6 +10,7 @@ import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.screens.confirmation.ConfirmationCodeActivity
 import com.applicaster.awscognitologin.screens.forgot.ForgotPasswordActivity
 import com.applicaster.awscognitologin.screens.signup.SignUpActivity
+import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_sign_in.*
@@ -30,6 +31,9 @@ class SignInActivity : AppCompatActivity(), SignInView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_sign_in)
+
+        UIUtils.applyInputStyle(et_user)
+        UIUtils.applyInputStyle(et_password)
 
         btn_sign_in.setOnClickListener {
             // todo: check if fields are not empty

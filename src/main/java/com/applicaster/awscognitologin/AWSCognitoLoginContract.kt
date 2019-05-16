@@ -100,6 +100,7 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback, Si
     override fun setPluginConfigurationParams(params: MutableMap<Any?, Any?>?) {
         Log.d(this.javaClass.simpleName, "set plugin configuration")
         val instance = PluginDataRepository.INSTANCE
+        PluginDataRepository.INSTANCE.params = params
         params?.let {
             instance.setClientId(params[CLIENT_ID].toString())
             instance.setClientSecret(params[CLIENT_SECRET].toString())
