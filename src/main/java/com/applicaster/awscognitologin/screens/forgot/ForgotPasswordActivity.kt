@@ -34,9 +34,15 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
 
         setContentView(R.layout.activity_forgot_password)
 
+        UIUtils.applyTitleStyle(tv_forgot_password_title)
+
+        UIUtils.applyDescriptionStyle(tv_forgot_password_description)
+
         UIUtils.applyInputStyle(et_username_fp)
         UIUtils.applyInputStyle(et_code_fp)
         UIUtils.applyInputStyle(et_new_password_fp)
+
+        UIUtils.applyButtonStyle(btn_forgot_password, tv_forgot_password_btn)
 
         btn_forgot_password.setOnClickListener {
             // todo: check if edit texts is empty
@@ -56,11 +62,11 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
         // since AWS forgot and reset password are together in the same method
         // we are using the same ui for both by hiding and showing elements
         tv_forgot_password_title.text = resources.getString(R.string.awsco_update_pwd_title_txt)
-        tv_forgot_password_indication.text = resources.getString(R.string.awsco_update_pwd_desc_txt)
+        tv_forgot_password_description.text = resources.getString(R.string.awsco_update_pwd_desc_txt)
         et_username_fp.visibility = View.GONE
         et_code_fp.visibility = View.VISIBLE
         et_new_password_fp.visibility = View.VISIBLE
-        tv_forgot_password_button_txt.text = resources.getText(R.string.awsco_update_pwd_btn_txt)
+        tv_forgot_password_btn.text = resources.getText(R.string.awsco_update_pwd_btn_txt)
     }
 
     override fun onForgotPasswordSuccess() {

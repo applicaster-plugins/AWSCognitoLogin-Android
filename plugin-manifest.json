@@ -202,6 +202,7 @@
       "tooltip_text": "Login Screen Title Text",
       "type": "text"
       },
+      // title style
       {
       "key": "awsco_view_title_color",
       "tooltip_text": "Title Color",
@@ -212,6 +213,8 @@
       "tooltip_text": "Title Font Size",
       "type": "text"
       },
+      // end of title style
+      // description style
       {
       "key": "awsco_view_desc_txt_color",
       "tooltip_text": "Title Color",
@@ -222,6 +225,7 @@
       "tooltip_text": "Title Font Size",
       "type": "text"
       },
+      // end of description style
       {
       "key": "awsco_sign_in_btn_text",
       "tooltip_text": "Login Screen Sign In Button Text",

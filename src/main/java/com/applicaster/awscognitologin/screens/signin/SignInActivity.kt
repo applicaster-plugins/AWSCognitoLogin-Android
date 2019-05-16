@@ -32,8 +32,13 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
         setContentView(R.layout.activity_sign_in)
 
+        UIUtils.applyTitleStyle(tv_sign_in_title)
+
         UIUtils.applyInputStyle(et_user)
         UIUtils.applyInputStyle(et_password)
+
+        UIUtils.applyButtonStyle(btn_sign_in, tv_sign_in_btn)
+        UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_question_btn, tv_sign_up_answer_btn)
 
         btn_sign_in.setOnClickListener {
             // todo: check if fields are not empty

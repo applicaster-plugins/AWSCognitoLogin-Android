@@ -28,7 +28,13 @@ class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
 
         setContentView(R.layout.activity_confirmation_code)
 
+        UIUtils.applyTitleStyle(tv_confirmation_code_title)
+
+        UIUtils.applyDescriptionStyle(tv_confirmation_code_description)
+
         UIUtils.applyInputStyle(et_username_cc)
+
+        UIUtils.applyButtonStyle(btn_send_code, tv_send_code_btn)
 
         btn_send_code.setOnClickListener {
             confirmationCodePresenter.sendConfirmationCode(et_username_cc.text.toString())

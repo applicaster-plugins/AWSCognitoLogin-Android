@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.Toast
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
@@ -31,7 +30,13 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
 
         setContentView(R.layout.activity_activate_account)
 
+        UIUtils.applyTitleStyle(tv_activate_account_title)
+
+        UIUtils.applyDescriptionStyle(tv_activate_account_description)
+
         UIUtils.applyInputStyle(et_code_aa)
+
+        UIUtils.applyButtonStyle(btn_activate, tv_activate_btn)
 
         btn_activate.setOnClickListener {
             if(et_code_aa.text.isNotEmpty()) {
