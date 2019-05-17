@@ -39,6 +39,10 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
         setTexts()
 
+        iv_close_si.setOnClickListener {
+            finish()
+        }
+
         btn_sign_in.setOnClickListener {
             // todo: check if fields are not empty
             signInPresenter.signIn(et_user.text.toString(), et_password.text.toString())
@@ -69,6 +73,8 @@ class SignInActivity : AppCompatActivity(), SignInView {
     }
 
     private fun applyStyles() {
+        UIUtils.applyCrossButtonStyle(v_close_si, "awsco_close_button_color")
+
         cl_sign_in.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
 
         Picasso.get()

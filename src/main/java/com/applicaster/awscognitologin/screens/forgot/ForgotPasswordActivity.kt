@@ -16,7 +16,6 @@ import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 import kotlinx.android.synthetic.main.activity_forgot_password.l_progress
-import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
 
@@ -42,6 +41,10 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
 
         setTexts()
 
+        iv_close_fp.setOnClickListener {
+            finish()
+        }
+
         btn_forgot_password.setOnClickListener {
             // todo: check if edit texts is empty
             if (alreadySendUsername) {
@@ -62,6 +65,8 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
     }
 
     private fun applyStyles() {
+        UIUtils.applyCrossButtonStyle(v_close_fp, "awsco_close_button_color")
+
         cl_forgot_password.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
 
         UIUtils.applyTitleStyle(tv_forgot_password_title)

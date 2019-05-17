@@ -15,11 +15,7 @@ import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
-import kotlinx.android.synthetic.main.activity_forgot_password.*
-import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
-import kotlinx.android.synthetic.main.activity_sign_up.btn_sign_up
-import kotlinx.android.synthetic.main.activity_sign_up.l_progress
 
 class SignUpActivity : AppCompatActivity(), SignUpView {
 
@@ -41,6 +37,10 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
 
         setTexts()
 
+        iv_close_reg.setOnClickListener {
+            finish()
+        }
+
         btn_sign_up.setOnClickListener {
             if (validateFields()) {
                 signUpPresenter.signUp(et_username_su.text.toString(),
@@ -60,6 +60,8 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
     }
 
     private fun applyStyles() {
+        UIUtils.applyCrossButtonStyle(v_close_reg, "awsco_close_button_color")
+
         cl_sign_up.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
 
         UIUtils.applyTitleStyle(tv_registration_title)

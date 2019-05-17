@@ -14,7 +14,6 @@ import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_confirmation_code.*
 import kotlinx.android.synthetic.main.activity_confirmation_code.l_progress
-import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
 
@@ -36,6 +35,10 @@ class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
 
         setTexts()
 
+        iv_close_cc.setOnClickListener {
+            finish()
+        }
+
         btn_send_code.setOnClickListener {
             confirmationCodePresenter.sendConfirmationCode(et_username_cc.text.toString())
         }
@@ -48,6 +51,8 @@ class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
     }
 
     private fun applyStyles() {
+        UIUtils.applyCrossButtonStyle(v_close_cc, "awsco_close_button_color")
+
         cl_confirmation_code.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
 
         UIUtils.applyTitleStyle(tv_confirmation_code_title)

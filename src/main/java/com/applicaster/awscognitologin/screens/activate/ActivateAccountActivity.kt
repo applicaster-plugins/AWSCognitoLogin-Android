@@ -15,7 +15,6 @@ import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_activate_account.*
 import kotlinx.android.synthetic.main.activity_activate_account.l_progress
-import kotlinx.android.synthetic.main.activity_sign_in.*
 import java.lang.Exception
 
 class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
@@ -39,6 +38,10 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
 
         setTexts()
 
+        iv_close_aa.setOnClickListener {
+            finish()
+        }
+
         btn_activate.setOnClickListener {
             if(et_code_aa.text.isNotEmpty()) {
                 activateAccountPresenter.activateAccount(et_code_aa.text.toString())
@@ -58,6 +61,8 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
     }
 
     private fun applyStyles() {
+        UIUtils.applyCrossButtonStyle(v_close_aa, "awsco_close_button_color")
+
         cl_activate_account.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
 
         UIUtils.applyTitleStyle(tv_activate_account_title)

@@ -3,6 +3,7 @@ package com.applicaster.awscognitologin.utils
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.ShapeDrawable
+import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
@@ -76,6 +77,15 @@ class UIUtils {
         fun setText(editText: MaterialEditText, hintTextKey: String) {
             params?.let {
                 editText.hint = params[hintTextKey].toString()
+            }
+        }
+
+        fun applyCrossButtonStyle(crossButton: View, keyValue: String) {
+            params?.let {
+                val drawable = crossButton.background
+                if (drawable is GradientDrawable) {
+                    drawable.setColor(Color.parseColor(params["awsco_close_button_color"].toString()))
+                }
             }
         }
     }
