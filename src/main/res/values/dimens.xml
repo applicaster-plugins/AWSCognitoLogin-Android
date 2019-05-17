@@ -6,4 +6,5 @@
     <dimen name="awsco_link_fontsize">12sp</dimen>
     <dimen name="et_field_width">190dp</dimen>
     <dimen name="awsco_confirmation_title_fontsize">24sp</dimen>
+    <dimen name="field_margin">48dp</dimen>
 </resources>

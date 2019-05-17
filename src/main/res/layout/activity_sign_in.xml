@@ -37,8 +37,10 @@
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/et_user"
         style="@style/InputStyle"
-        android:layout_width="@dimen/et_field_width"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/field_margin"
+        android:layout_marginEnd="@dimen/field_margin"
         android:hint="@string/awsco_user_input_placeholder_txt"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,11 +63,11 @@
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/et_password"
         style="@style/InputStyle"
-        android:layout_width="@dimen/et_field_width"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="@dimen/field_margin"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="@dimen/field_margin"
         android:ems="10"
         android:hint="@string/awsco_password_input_placeholder_txt"
 
@@ -102,11 +104,11 @@
 
     <LinearLayout
         android:id="@+id/btn_sign_in"
-        android:layout_width="190dp"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="@dimen/field_margin"
         android:layout_marginTop="60dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="@dimen/field_margin"
         android:background="@drawable/aws_btn_background"
         android:gravity="center"
         android:orientation="horizontal"

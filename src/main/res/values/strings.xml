@@ -27,4 +27,5 @@
     <string name="dialog_title">Update password complete</string>
     <string name="dialog_description">Your password has been reset. Please, login now with your new credentials.</string>
     <string name="dialog_positive_button_txt">OK</string>
+    <string name="send">Send</string>
 </resources>
