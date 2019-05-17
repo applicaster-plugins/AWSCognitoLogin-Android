@@ -38,6 +38,11 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
 
         setTexts()
 
+        iv_back_aa.setOnClickListener {
+            startActivity(SignInActivity.getCallingIntent(this))
+            finish()
+        }
+
         iv_close_aa.setOnClickListener {
             finish()
         }
@@ -61,6 +66,8 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
     }
 
     private fun applyStyles() {
+        UIUtils.applyBackButtonStyle(iv_back_aa)
+
         UIUtils.applyCrossButtonStyle(v_close_aa, "awsco_close_button_color")
 
         cl_activate_account.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))

@@ -10,6 +10,7 @@ import android.view.View
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.activate.ActivateAccountActivity
+import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_confirmation_code.*
@@ -35,6 +36,11 @@ class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
 
         setTexts()
 
+        iv_back_cc.setOnClickListener {
+            startActivity(SignInActivity.getCallingIntent(this))
+            finish()
+        }
+
         iv_close_cc.setOnClickListener {
             finish()
         }
@@ -51,6 +57,8 @@ class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
     }
 
     private fun applyStyles() {
+        UIUtils.applyBackButtonStyle(iv_back_cc)
+
         UIUtils.applyCrossButtonStyle(v_close_cc, "awsco_close_button_color")
 
         cl_confirmation_code.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))

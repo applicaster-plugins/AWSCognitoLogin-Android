@@ -41,6 +41,11 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
 
         setTexts()
 
+        iv_back_fp.setOnClickListener {
+            startActivity(SignInActivity.getCallingIntent(this))
+            finish()
+        }
+
         iv_close_fp.setOnClickListener {
             finish()
         }
@@ -65,6 +70,8 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
     }
 
     private fun applyStyles() {
+        UIUtils.applyBackButtonStyle(iv_back_fp)
+
         UIUtils.applyCrossButtonStyle(v_close_fp, "awsco_close_button_color")
 
         cl_forgot_password.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))

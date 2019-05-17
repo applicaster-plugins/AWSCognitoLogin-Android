@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
@@ -86,6 +87,12 @@ class UIUtils {
                 if (drawable is GradientDrawable) {
                     drawable.setColor(Color.parseColor(params["awsco_close_button_color"].toString()))
                 }
+            }
+        }
+
+        fun applyBackButtonStyle(backButton: ImageView) {
+            params?.let {
+                backButton.setColorFilter(Color.parseColor(params["awsco_backbutton_color"].toString()))
             }
         }
     }

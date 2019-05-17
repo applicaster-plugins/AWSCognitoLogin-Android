@@ -37,6 +37,11 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
 
         setTexts()
 
+        iv_back_reg.setOnClickListener {
+            startActivity(SignInActivity.getCallingIntent(this))
+            finish()
+        }
+
         iv_close_reg.setOnClickListener {
             finish()
         }
@@ -60,6 +65,8 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
     }
 
     private fun applyStyles() {
+        UIUtils.applyBackButtonStyle(iv_back_reg)
+
         UIUtils.applyCrossButtonStyle(v_close_reg, "awsco_close_button_color")
 
         cl_sign_up.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))

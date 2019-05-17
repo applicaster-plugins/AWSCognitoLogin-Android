@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     android:background="@color/awsco_bc_color">
 
+    <ImageView
+        android:id="@+id/iv_back_reg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <RelativeLayout
         android:id="@+id/iv_close_reg"
         android:layout_width="wrap_content"
