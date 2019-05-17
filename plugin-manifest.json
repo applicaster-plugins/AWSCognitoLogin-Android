@@ -242,6 +242,11 @@
       "type": "text"
       },
       {
+      "key": "awsco_send_code_btn_txt",
+      "tooltip_text": "Confirmation Screen Send Code Text",
+      "type": "text"
+      },
+      {
       "key": "awsco_activation_code_title_txt",
       "tooltip_text": "Activation Screen Title Text",
       "type": "text"
@@ -252,7 +257,7 @@
       "type": "text"
       },
       {
-      "key": "awsco_activation_send_code_btn_txt",
+      "key": "awsco_activate_btn_txt",
       "tooltip_text": "Activation Screen Send Code Button Text",
       "type": "text"
       },

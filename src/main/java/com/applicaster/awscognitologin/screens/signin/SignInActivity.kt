@@ -2,17 +2,20 @@ package com.applicaster.awscognitologin.screens.signin
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.applicaster.awscognitologin.R
+import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.confirmation.ConfirmationCodeActivity
 import com.applicaster.awscognitologin.screens.forgot.ForgotPasswordActivity
 import com.applicaster.awscognitologin.screens.signup.SignUpActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class SignInActivity : AppCompatActivity(), SignInView {
@@ -66,6 +69,12 @@ class SignInActivity : AppCompatActivity(), SignInView {
     }
 
     private fun applyStyles() {
+        cl_sign_in.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
+
+        Picasso.get()
+                .load(PluginDataRepository.INSTANCE.params?.get("awsco_logo_image").toString())
+                .into(iv_logo)
+
         UIUtils.applyTitleStyle(tv_sign_in_title)
 
         UIUtils.applyInputStyle(et_user)

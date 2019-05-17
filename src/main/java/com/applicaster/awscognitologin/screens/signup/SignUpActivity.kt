@@ -2,18 +2,23 @@ package com.applicaster.awscognitologin.screens.signup
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails
 import com.applicaster.awscognitologin.R
+import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.activate.ActivateAccountActivity
+import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_forgot_password.*
+import kotlinx.android.synthetic.main.activity_sign_in.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import kotlinx.android.synthetic.main.activity_sign_up.btn_sign_up
 import kotlinx.android.synthetic.main.activity_sign_up.l_progress
 
 class SignUpActivity : AppCompatActivity(), SignUpView {
@@ -55,6 +60,8 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
     }
 
     private fun applyStyles() {
+        cl_sign_up.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
+
         UIUtils.applyTitleStyle(tv_registration_title)
 
         UIUtils.applyInputStyle(et_username_su)
@@ -93,5 +100,10 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
 
     override fun hideProgress() {
         l_progress.visibility = View.GONE
+    }
+
+    override fun onBackPressed() {
+        startActivity(SignInActivity.getCallingIntent(this))
+        finish()
     }
 }

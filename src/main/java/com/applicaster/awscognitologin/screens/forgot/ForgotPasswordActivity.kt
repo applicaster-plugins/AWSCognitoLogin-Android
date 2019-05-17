@@ -2,6 +2,7 @@ package com.applicaster.awscognitologin.screens.forgot
 
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v7.app.AlertDialog
@@ -9,10 +10,13 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.ForgotPasswordContinuation
 import com.applicaster.awscognitologin.R
+import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_forgot_password.*
+import kotlinx.android.synthetic.main.activity_forgot_password.l_progress
+import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
 
@@ -36,6 +40,8 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
 
         applyStyles()
 
+        setTexts()
+
         btn_forgot_password.setOnClickListener {
             // todo: check if edit texts is empty
             if (alreadySendUsername) {
@@ -48,7 +54,16 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
         }
     }
 
+    private fun setTexts() {
+        UIUtils.setText(tv_forgot_password_title, "awsco_forgot_pwd_title_txt")
+        UIUtils.setText(tv_forgot_password_description, "awsco_forgot_pwd_desc_txt")
+        UIUtils.setText(et_username_fp, "awsco_user_input_placeholder_txt")
+        UIUtils.setText(tv_forgot_password_btn, "awsco_send_forgot_pwd_btn_txt")
+    }
+
     private fun applyStyles() {
+        cl_forgot_password.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
+
         UIUtils.applyTitleStyle(tv_forgot_password_title)
 
         UIUtils.applyDescriptionStyle(tv_forgot_password_description)
@@ -106,7 +121,7 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
     }
 
     override fun onBackPressed() {
-        super.onBackPressed()
         startActivity(SignInActivity.getCallingIntent(this))
+        finish()
     }
 }
