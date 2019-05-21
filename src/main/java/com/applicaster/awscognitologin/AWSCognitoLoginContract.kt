@@ -1,6 +1,7 @@
 package com.applicaster.awscognitologin
 
 import android.content.Context
+import android.content.DialogInterface
 import android.util.Log
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
 import com.applicaster.awscognitologin.data.AWSCognitoManager
@@ -12,6 +13,11 @@ import com.applicaster.awscognitologin.utils.Constants.Companion.CLIENT_SECRET
 import com.applicaster.awscognitologin.utils.Constants.Companion.REGION
 import com.applicaster.awscognitologin.utils.Constants.Companion.TOKEN
 import com.applicaster.awscognitologin.utils.Constants.Companion.USER_POOL_ID
+import com.applicaster.awscognitologin.utils.UIUtils
+import com.applicaster.model.APCategory
+import com.applicaster.model.APChannel
+import com.applicaster.model.APURLPlayable
+import com.applicaster.model.APVodItem
 import com.applicaster.plugin_manager.Plugin
 import com.applicaster.plugin_manager.hook.HookListener
 import com.applicaster.plugin_manager.login.AsyncLoginContract
@@ -62,7 +68,13 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback, Si
     }
 
     override fun isItemLocked(model: Any?): Boolean {
-        // todo: check if model.isFree()
+//        model?.let {
+//            if(model is APVodItem && model.isFree) return false
+//            if(model is APURLPlayable && model.isFree) return false
+//            if(model is APCategory && model.isFree) return false
+//            if(model is APChannel && model.isFree) return false
+//        }
+
         return true
     }
 
@@ -110,18 +122,31 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback, Si
     }
 
     override fun handlePluginScheme(context: Context?, data: MutableMap<String, String>?): Boolean {
+        // todo: localize this messages
         data?.let {
             if (it["type"].equals("login")) {
                 if (it["action"].equals("logout")) {
-                    AWSCognitoManager.INSTANCE.userPool?.let { userPool ->
-                        userPool.user?.signOut()
-                        AWSCognitoManager.INSTANCE.userPool = null
-                        PluginDataRepository.INSTANCE.clearCredentials()
-                        Toaster.makeToast(context, "User signed out")
-                        return true
+                    if (!PluginDataRepository.INSTANCE.isUserAlreadyLoggedIn()) {
+                        AWSCognitoManager.INSTANCE.userPool?.let { userPool ->
+                            userPool.user?.signOut()
+                            AWSCognitoManager.INSTANCE.userPool = null
+                            PluginDataRepository.INSTANCE.clearCredentials()
+                            context?.let {
+                                UIUtils.getAlertDialog(context, "Sign Out", "Signed out successfully.",
+                                        "OK",
+                                        DialogInterface.OnClickListener { dialogInterface, _ -> dialogInterface.dismiss() })
+                                        .show()
+                            }
+                            return true
+                        }
+                    } else {
+                        context?.let {
+                            UIUtils.getAlertDialog(context, "Sign Out", "There's no user signed in.",
+                                    "OK",
+                                    DialogInterface.OnClickListener { dialogInterface, _ -> dialogInterface.dismiss() })
+                                    .show()
+                        }
                     }
-
-                    Toaster.makeToast(context, "User not signed in")
                 }
             }
         }

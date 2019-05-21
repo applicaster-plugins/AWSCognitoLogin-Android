@@ -1,6 +1,7 @@
 package com.applicaster.awscognitologin.screens.forgot
 
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -14,6 +15,7 @@ import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.base.AWSActivity
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.UIUtils
+import com.applicaster.awscognitologin.utils.UIUtils.Companion.getAlertDialog
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 import kotlinx.android.synthetic.main.activity_forgot_password.l_progress
@@ -85,19 +87,13 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView, View.OnClickLi
 
     override fun applyStyles() {
         UIUtils.applyBackButtonStyle(iv_back_fp)
-
         UIUtils.applyCrossButtonStyle(v_close_fp, "awsco_close_button_color")
-
         cl_forgot_password.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
-
         UIUtils.applyTitleStyle(tv_forgot_password_title)
-
         UIUtils.applyDescriptionStyle(tv_forgot_password_description)
-
         UIUtils.applyInputStyle(et_username_fp)
         UIUtils.applyInputStyle(et_code_fp)
         UIUtils.applyInputStyle(et_new_password_fp)
-
         UIUtils.applyButtonStyle(btn_forgot_password, tv_forgot_password_btn)
     }
 
@@ -120,20 +116,9 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView, View.OnClickLi
     override fun onForgotPasswordSuccess() {
         getAlertDialog(this, resources.getString(R.string.dialog_title),
                 resources.getString(R.string.dialog_description),
-                resources.getString(R.string.dialog_positive_button_txt)).show()
-    }
-
-    private fun getAlertDialog(context: Context, title: String, message: String,
-                               positiveBtnText: String) : AlertDialog {
-        val builder = AlertDialog.Builder(context)
-        builder.setTitle(title)
-        builder.setMessage(message)
-        builder.setPositiveButton(positiveBtnText) { _, _ ->
-            // todo: figure out how to put this in a separate method
-            goTo(SignInActivity.getCallingIntent(this))
-        }
-
-        return builder.create()
+                resources.getString(R.string.dialog_positive_button_txt),
+                DialogInterface.OnClickListener { _, _ -> goTo(SignInActivity.getCallingIntent(this)) })
+                .show()
     }
 
     override fun onForgotPasswordFail(error: String) {

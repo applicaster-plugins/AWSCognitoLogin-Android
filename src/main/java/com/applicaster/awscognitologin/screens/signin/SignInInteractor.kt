@@ -1,7 +1,6 @@
 package com.applicaster.awscognitologin.screens.signin
 
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoDevice
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser
 import com.applicaster.awscognitologin.data.AWSCognitoManager
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.MultiFactorAuthenticationContinuation
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.AuthenticationDetails

@@ -1,13 +1,18 @@
 package com.applicaster.awscognitologin.utils
 
+import android.content.Context
+import android.content.DialogInterface
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.ShapeDrawable
+import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
+import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.rengwuxian.materialedittext.MaterialEditText
 
 class UIUtils {
@@ -94,6 +99,17 @@ class UIUtils {
             params?.let {
                 backButton.setColorFilter(Color.parseColor(params["awsco_backbutton_color"].toString()))
             }
+        }
+
+        fun getAlertDialog(context: Context, title: String, message: String,
+                                   positiveBtnText: String, listener: DialogInterface.OnClickListener)
+                : AlertDialog {
+            val builder = AlertDialog.Builder(context, R.style.AlertDialogCustom)
+            builder.setTitle(title)
+            builder.setMessage(message)
+            builder.setPositiveButton(positiveBtnText, listener)
+
+            return builder.create()
         }
     }
 }
