@@ -28,4 +28,6 @@
     <string name="dialog_description">Your password has been reset. Please, login now with your new credentials.</string>
     <string name="dialog_positive_button_txt">OK</string>
     <string name="send">Send</string>
+    <string name="your_passwords_are_not_equal">Your password are not equal</string>
+    <string name="invalid_email">Invalid email</string>
 </resources>

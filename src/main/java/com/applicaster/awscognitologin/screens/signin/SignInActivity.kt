@@ -5,8 +5,6 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.annotation.NonNull
-import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
@@ -19,9 +17,8 @@ import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_sign_in.*
-import kotlin.Exception
 
-class SignInActivity : AWSActivity(), SignInView {
+class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
 
     var signInPresenter: SignInPresenter = SignInPresenter(
             this, SignInInteractor())
@@ -37,38 +34,42 @@ class SignInActivity : AWSActivity(), SignInView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_sign_in)
+    }
 
-        iv_close_si.setOnClickListener {
-            finish()
-        }
+    override fun onClick(view: View?) {
+        when(view?.id) {
+            R.id.btn_sign_in -> {
+                if (et_username_si.text.isEmpty()) {
+                    tv_username_validation.visibility = View.VISIBLE
+                    return
+                }
 
-        btn_sign_in.setOnClickListener {
-            // todo: check if fields are not empty
-            signInPresenter.signIn(et_user.text.toString(), et_password.text.toString())
-        }
+                if(et_password_validation.text.isEmpty()) {
+                    tv_password_validation.visibility = View.VISIBLE
+                    return
+                }
 
-        tv_activate_account.setOnClickListener {
-            goTo(ConfirmationCodeActivity.getCallingIntent(this))
-        }
+                signInPresenter.signIn(et_username_si.text.toString(), et_password_validation.text.toString())
+            }
 
-        btn_sign_up.setOnClickListener {
-            goTo(SignUpActivity.getCallingIntent(this))
-        }
+            R.id.iv_close_si -> finish()
 
-        tv_forgot_password.setOnClickListener {
-            goTo(ForgotPasswordActivity.getCallingIntent(this))
+            R.id.tv_activate_account -> goTo(ConfirmationCodeActivity.getCallingIntent(this))
+
+            R.id.btn_sign_up -> goTo(SignUpActivity.getCallingIntent(this))
+
+            R.id.tv_forgot_password -> goTo(ForgotPasswordActivity.getCallingIntent(this))
         }
     }
 
     override fun setTexts() {
         UIUtils.setText(tv_sign_in_title, "awsco_signin_title_text")
-        UIUtils.setText(et_user, "awsco_user_input_placeholder_txt")
-        UIUtils.setText(et_password, "awsco_password_input_placeholder_txt")
+        UIUtils.setText(et_username_si, "awsco_user_input_placeholder_txt")
+        UIUtils.setText(et_password_validation, "awsco_password_input_placeholder_txt")
         UIUtils.setText(tv_forgot_password, "awsco_forpas_txt")
         UIUtils.setText(tv_activate_account, "awsco_actacc_txt")
         UIUtils.setText(tv_sign_up_question_btn, "awsco_signup_btn_qt_txt")
         UIUtils.setText(tv_sign_up_answer_btn, "awsco_signup_btn_answ_text")
-
     }
 
     override fun applyStyles() {
@@ -82,19 +83,14 @@ class SignInActivity : AWSActivity(), SignInView {
 
         UIUtils.applyTitleStyle(tv_sign_in_title)
 
-        UIUtils.applyInputStyle(et_user)
-        UIUtils.applyInputStyle(et_password)
+        UIUtils.applyInputStyle(et_username_si)
+        UIUtils.applyInputStyle(et_password_validation)
 
         UIUtils.applyButtonStyle(btn_sign_in, tv_sign_in_btn)
         UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_question_btn, tv_sign_up_answer_btn)
 
         UIUtils.applyLinkStyle(tv_forgot_password)
         UIUtils.applyLinkStyle(tv_activate_account)
-    }
-
-    fun goTo(intent: Intent) {
-        startActivity(intent)
-        finish()
     }
 
     override fun onSignInSuccess() {

@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
+import android.util.Patterns
 import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails
 import com.applicaster.awscognitologin.R
@@ -18,7 +19,7 @@ import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
-class SignUpActivity : AWSActivity(), SignUpView {
+class SignUpActivity : AWSActivity(), SignUpView, View.OnClickListener {
 
     var signUpPresenter: SignUpPresenter = SignUpPresenter(
             this, SignUpInteractor())
@@ -33,18 +34,59 @@ class SignUpActivity : AWSActivity(), SignUpView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_sign_up)
+    }
 
-        iv_back_reg.setOnClickListener {
-            startActivity(SignInActivity.getCallingIntent(this))
-            finish()
-        }
+    override fun onClick(view: View?) {
+        when (view?.id) {
+            R.id.iv_back_reg -> {
+                goTo(SignInActivity.getCallingIntent(this))
+            }
 
-        iv_close_reg.setOnClickListener {
-            finish()
-        }
+            R.id.iv_close_reg -> finish()
 
-        btn_sign_up.setOnClickListener {
-            if (validateFields()) {
+            R.id.btn_sign_up -> {
+                if(et_username_su.text.isEmpty()) {
+                    tv_username_validation_su.visibility = View.VISIBLE
+                    return
+                }
+
+                hideView(tv_username_validation_su)
+
+                if(et_email_su.text.isEmpty()) {
+                    tv_email_validation_su.visibility = View.VISIBLE
+                    return
+                }
+
+                if(et_password_su.text.isEmpty()) {
+                    tv_password_validation_su.visibility = View.VISIBLE
+                    return
+                }
+
+                hideView(tv_password_validation_su)
+
+                if(et_confirm_password_su.text.isEmpty()) {
+                    tv_confirm_password_validation_su.visibility = View.VISIBLE
+                    return
+                }
+
+                if(!Patterns.EMAIL_ADDRESS.matcher(et_email_su.text.toString()).matches()) {
+                    tv_email_validation_su.text = resources.getString(R.string.invalid_email)
+                    tv_email_validation_su.visibility = View.VISIBLE
+                    return
+                }
+
+                hideView(tv_email_validation_su)
+
+                if(et_password_su.text.toString() != et_confirm_password_su.text.toString()) {
+                    // todo: add this to localization
+                    tv_confirm_password_validation_su.text =
+                            resources.getString(R.string.your_passwords_are_not_equal)
+                    tv_confirm_password_validation_su.visibility = View.VISIBLE
+                    return
+                }
+
+                hideView(tv_confirm_password_validation_su)
+
                 signUpPresenter.signUp(et_username_su.text.toString(),
                         et_email_su.text.toString(),
                         et_password_su.text.toString())
@@ -76,13 +118,6 @@ class SignUpActivity : AWSActivity(), SignUpView {
         UIUtils.applyInputStyle(et_confirm_password_su)
 
         UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_btn)
-    }
-
-    // returns true if all fields are filled
-    private fun validateFields(): Boolean {
-        // todo: check if username and email are not empty
-        // todo: check if password and confirmPassword are equals
-        return true
     }
 
     override fun onSignUpSuccess() {

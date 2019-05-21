@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:onClick="onClick"
         android:src="@drawable/back_arrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:onClick="onClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -71,22 +73,44 @@
         app:met_floatingLabel="normal"
         app:met_underlineColor="@color/awsco_input_ulc" />
 
+    <TextView
+        android:id="@+id/tv_username_validation_su"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/field_required"
+        android:textColor="@color/awsco_validation_txt_color"
+        android:textSize="@dimen/awsco_validation_fontsize"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/et_username_su"
+        app:layout_constraintTop_toBottomOf="@+id/et_username_su" />
+
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/et_email_su"
         style="@style/InputStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/field_margin"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/field_margin"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_username_su"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username_validation_su"
         app:met_floatingLabel="normal"
         app:met_underlineColor="@color/awsco_input_ulc" />
+
+    <TextView
+        android:id="@+id/tv_email_validation_su"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/field_required"
+        android:textColor="@color/awsco_validation_txt_color"
+        android:textSize="@dimen/awsco_validation_fontsize"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/et_email_su"
+        app:layout_constraintTop_toBottomOf="@+id/et_email_su" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/et_password_su"
@@ -94,7 +118,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/field_margin"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/field_margin"
         android:ems="10"
         android:hint="@string/password"
@@ -102,9 +126,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_email_su"
+        app:layout_constraintTop_toBottomOf="@+id/tv_email_validation_su"
         app:met_floatingLabel="normal"
         app:met_underlineColor="@color/awsco_input_ulc" />
+
+    <TextView
+        android:id="@+id/tv_password_validation_su"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/field_required"
+        android:textColor="@color/awsco_validation_txt_color"
+        android:textSize="@dimen/awsco_validation_fontsize"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/et_password_su"
+        app:layout_constraintTop_toBottomOf="@+id/et_password_su" />
 
     <com.rengwuxian.materialedittext.MaterialEditText
         android:id="@+id/et_confirm_password_su"
@@ -112,30 +147,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/field_margin"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/field_margin"
         android:ems="10"
         android:hint="@string/confirm_password"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_su"
+        app:layout_constraintTop_toBottomOf="@+id/tv_password_validation_su"
         app:met_floatingLabel="normal"
         app:met_underlineColor="@color/awsco_input_ulc" />
+
+    <TextView
+        android:id="@+id/tv_confirm_password_validation_su"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/field_required"
+        android:textColor="@color/awsco_validation_txt_color"
+        android:textSize="@dimen/awsco_validation_fontsize"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/et_confirm_password_su"
+        app:layout_constraintTop_toBottomOf="@+id/et_confirm_password_su" />
 
     <LinearLayout
         android:id="@+id/btn_sign_up"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginStart="@dimen/field_margin"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/field_margin"
         android:background="@drawable/aws_btn_background"
         android:gravity="center"
+        android:onClick="onClick"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_confirm_password_su">
+        app:layout_constraintTop_toBottomOf="@+id/tv_confirm_password_validation_su">
 
         <TextView
             android:id="@+id/tv_sign_up_btn"
