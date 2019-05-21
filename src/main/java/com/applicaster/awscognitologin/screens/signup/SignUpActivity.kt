@@ -11,13 +11,14 @@ import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDel
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.activate.ActivateAccountActivity
+import com.applicaster.awscognitologin.screens.base.AWSActivity
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_sign_up.*
 
-class SignUpActivity : AppCompatActivity(), SignUpView {
+class SignUpActivity : AWSActivity(), SignUpView {
 
     var signUpPresenter: SignUpPresenter = SignUpPresenter(
             this, SignUpInteractor())
@@ -32,10 +33,6 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_sign_up)
-
-        applyStyles()
-
-        setTexts()
 
         iv_back_reg.setOnClickListener {
             startActivity(SignInActivity.getCallingIntent(this))
@@ -55,7 +52,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
         }
     }
 
-    private fun setTexts() {
+    override fun setTexts() {
         UIUtils.setText(tv_registration_title, "awsco_registration_code_title_txt")
         UIUtils.setText(et_username_su, "awsco_user_input_placeholder_txt")
         UIUtils.setText(et_email_su, "awsco_email_input_placeholder_txt")
@@ -64,7 +61,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
         UIUtils.setText(tv_sign_up_btn, "awsco_registration_sign_up_btn_txt")
     }
 
-    private fun applyStyles() {
+    override fun applyStyles() {
         UIUtils.applyBackButtonStyle(iv_back_reg)
 
         UIUtils.applyCrossButtonStyle(v_close_reg, "awsco_close_button_color")

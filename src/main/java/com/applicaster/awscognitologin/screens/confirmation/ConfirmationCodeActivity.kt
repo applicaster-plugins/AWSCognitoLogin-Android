@@ -10,13 +10,14 @@ import android.view.View
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.activate.ActivateAccountActivity
+import com.applicaster.awscognitologin.screens.base.AWSActivity
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_confirmation_code.*
 import kotlinx.android.synthetic.main.activity_confirmation_code.l_progress
 
-class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
+class ConfirmationCodeActivity : AWSActivity(), ConfirmationCodeView {
 
     var confirmationCodePresenter: ConfirmationCodePresenter = ConfirmationCodePresenter(
             this, ConfirmationCodeInteractor())
@@ -32,10 +33,6 @@ class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
 
         setContentView(R.layout.activity_confirmation_code)
 
-        applyStyles()
-
-        setTexts()
-
         iv_back_cc.setOnClickListener {
             startActivity(SignInActivity.getCallingIntent(this))
             finish()
@@ -50,13 +47,13 @@ class ConfirmationCodeActivity : AppCompatActivity(), ConfirmationCodeView {
         }
     }
 
-    private fun setTexts() {
+    override fun setTexts() {
         UIUtils.setText(tv_confirmation_code_title, "awsco_confirmation_title_txt")
         UIUtils.setText(tv_confirmation_code_description, "awsco_confirmation_desc_txt")
         UIUtils.setText(tv_send_code_btn, "awsco_send_code_btn_txt")
     }
 
-    private fun applyStyles() {
+    override fun applyStyles() {
         UIUtils.applyBackButtonStyle(iv_back_cc)
 
         UIUtils.applyCrossButtonStyle(v_close_cc, "awsco_close_button_color")

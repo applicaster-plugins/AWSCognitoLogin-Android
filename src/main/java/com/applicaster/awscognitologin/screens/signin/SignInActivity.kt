@@ -6,9 +6,11 @@ import android.graphics.Color
 import android.os.Bundle
 import android.support.annotation.NonNull
 import android.support.v7.app.AppCompatActivity
+import android.util.Log
 import android.view.View
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
+import com.applicaster.awscognitologin.screens.base.AWSActivity
 import com.applicaster.awscognitologin.screens.confirmation.ConfirmationCodeActivity
 import com.applicaster.awscognitologin.screens.forgot.ForgotPasswordActivity
 import com.applicaster.awscognitologin.screens.signup.SignUpActivity
@@ -17,8 +19,9 @@ import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import kotlin.Exception
 
-class SignInActivity : AppCompatActivity(), SignInView {
+class SignInActivity : AWSActivity(), SignInView {
 
     var signInPresenter: SignInPresenter = SignInPresenter(
             this, SignInInteractor())
@@ -34,10 +37,6 @@ class SignInActivity : AppCompatActivity(), SignInView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_sign_in)
-
-        applyStyles()
-
-        setTexts()
 
         iv_close_si.setOnClickListener {
             finish()
@@ -61,7 +60,7 @@ class SignInActivity : AppCompatActivity(), SignInView {
         }
     }
 
-    private fun setTexts() {
+    override fun setTexts() {
         UIUtils.setText(tv_sign_in_title, "awsco_signin_title_text")
         UIUtils.setText(et_user, "awsco_user_input_placeholder_txt")
         UIUtils.setText(et_password, "awsco_password_input_placeholder_txt")
@@ -72,7 +71,7 @@ class SignInActivity : AppCompatActivity(), SignInView {
 
     }
 
-    private fun applyStyles() {
+    override fun applyStyles() {
         UIUtils.applyCrossButtonStyle(v_close_si, "awsco_close_button_color")
 
         cl_sign_in.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))

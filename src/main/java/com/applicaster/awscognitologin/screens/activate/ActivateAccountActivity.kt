@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
+import com.applicaster.awscognitologin.screens.base.AWSActivity
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
@@ -17,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_activate_account.*
 import kotlinx.android.synthetic.main.activity_activate_account.l_progress
 import java.lang.Exception
 
-class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
+class ActivateAccountActivity : AWSActivity(), ActivateAccountView {
 
     var activateAccountPresenter: ActivateAccountPresenter = ActivateAccountPresenter(
             this, ActivateAccountInteractor())
@@ -33,10 +34,6 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_activate_account)
-
-        applyStyles()
-
-        setTexts()
 
         iv_back_aa.setOnClickListener {
             startActivity(SignInActivity.getCallingIntent(this))
@@ -57,7 +54,7 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
         }
     }
 
-    private fun setTexts() {
+    override fun setTexts() {
         UIUtils.setText(tv_activate_account_title, "awsco_activation_code_title_txt")
         UIUtils.setText(tv_activate_account_description, "awsco_activation_code_desc_txt")
         UIUtils.setText(et_code_aa, "awsco_code_input_placeholder_txt")
@@ -65,7 +62,7 @@ class ActivateAccountActivity : AppCompatActivity(), ActivateAccountView {
         // todo: missing resend code
     }
 
-    private fun applyStyles() {
+    override fun applyStyles() {
         UIUtils.applyBackButtonStyle(iv_back_aa)
 
         UIUtils.applyCrossButtonStyle(v_close_aa, "awsco_close_button_color")

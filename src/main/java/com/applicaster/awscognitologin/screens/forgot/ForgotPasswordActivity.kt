@@ -11,13 +11,14 @@ import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.continuations.ForgotPasswordContinuation
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
+import com.applicaster.awscognitologin.screens.base.AWSActivity
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 import kotlinx.android.synthetic.main.activity_forgot_password.l_progress
 
-class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
+class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView {
 
     var alreadySendUsername = false
     lateinit var continuation: ForgotPasswordContinuation
@@ -36,10 +37,6 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_forgot_password)
-
-        applyStyles()
-
-        setTexts()
 
         iv_back_fp.setOnClickListener {
             startActivity(SignInActivity.getCallingIntent(this))
@@ -62,14 +59,14 @@ class ForgotPasswordActivity : AppCompatActivity(), ForgotPasswordView {
         }
     }
 
-    private fun setTexts() {
+    override fun setTexts() {
         UIUtils.setText(tv_forgot_password_title, "awsco_forgot_pwd_title_txt")
         UIUtils.setText(tv_forgot_password_description, "awsco_forgot_pwd_desc_txt")
         UIUtils.setText(et_username_fp, "awsco_user_input_placeholder_txt")
         UIUtils.setText(tv_forgot_password_btn, "awsco_send_forgot_pwd_btn_txt")
     }
 
-    private fun applyStyles() {
+    override fun applyStyles() {
         UIUtils.applyBackButtonStyle(iv_back_fp)
 
         UIUtils.applyCrossButtonStyle(v_close_fp, "awsco_close_button_color")
