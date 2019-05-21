@@ -14,11 +14,12 @@ import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
+import com.google.android.gms.signin.SignIn
 import kotlinx.android.synthetic.main.activity_activate_account.*
 import kotlinx.android.synthetic.main.activity_activate_account.l_progress
 import java.lang.Exception
 
-class ActivateAccountActivity : AWSActivity(), ActivateAccountView {
+class ActivateAccountActivity : AWSActivity(), ActivateAccountView, View.OnClickListener {
 
     var activateAccountPresenter: ActivateAccountPresenter = ActivateAccountPresenter(
             this, ActivateAccountInteractor())
@@ -34,22 +35,21 @@ class ActivateAccountActivity : AWSActivity(), ActivateAccountView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_activate_account)
+    }
 
-        iv_back_aa.setOnClickListener {
-            startActivity(SignInActivity.getCallingIntent(this))
-            finish()
-        }
+    override fun onClick(view: View?) {
+        when(view?.id) {
+            R.id.iv_back_aa -> goTo(SignInActivity.getCallingIntent(this))
+            R.id.iv_close_aa -> finish()
+            R.id.btn_activate -> {
+                if(et_code_aa.text.isNotEmpty()) {
+                    tv_code_validation_aa.visibility = View.VISIBLE
+                    return
+                }
 
-        iv_close_aa.setOnClickListener {
-            finish()
-        }
+                hideView(tv_code_validation_aa)
 
-        btn_activate.setOnClickListener {
-            if(et_code_aa.text.isNotEmpty()) {
                 activateAccountPresenter.activateAccount(et_code_aa.text.toString())
-            } else {
-                // todo: show error
-                Toaster.makeToast(this, "An error ocurred")
             }
         }
     }

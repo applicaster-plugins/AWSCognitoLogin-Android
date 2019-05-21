@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/back_arrow"
         android:onClick="onClick"
+        android:src="@drawable/back_arrow"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -86,12 +86,23 @@
         app:met_floatingLabel="normal"
         app:met_underlineColor="@color/awsco_input_ulc" />
 
+    <TextView
+        android:id="@+id/tv_code_validation_aa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/field_required"
+        android:textColor="@color/awsco_validation_txt_color"
+        android:textSize="@dimen/awsco_validation_fontsize"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/et_code_aa"
+        app:layout_constraintTop_toBottomOf="@+id/et_code_aa" />
+
     <LinearLayout
         android:id="@+id/btn_activate"
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_marginStart="@dimen/field_margin"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/field_margin"
         android:background="@drawable/aws_btn_background"
         android:gravity="center"
@@ -100,23 +111,25 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_code_aa">
+        app:layout_constraintTop_toBottomOf="@+id/tv_code_validation_aa">
 
         <TextView
             android:id="@+id/tv_activate_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Activate"
+            android:text="@string/activate"
             android:textColor="@color/awsco_btn_txt_color"
             android:textSize="@dimen/awsco_btn_fontsize" />
     </LinearLayout>
 
+    <!-- TODO: implement resend code functionality -->
     <TextView
         android:id="@+id/tv_resend_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Resend Code"
+        android:text="@string/resend_code"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/btn_activate"
         app:layout_constraintTop_toBottomOf="@+id/btn_activate" />
 

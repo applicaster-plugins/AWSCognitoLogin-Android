@@ -18,7 +18,7 @@ import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_forgot_password.*
 import kotlinx.android.synthetic.main.activity_forgot_password.l_progress
 
-class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView {
+class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView, View.OnClickListener {
 
     var alreadySendUsername = false
     lateinit var continuation: ForgotPasswordContinuation
@@ -37,24 +37,41 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_forgot_password)
+    }
 
-        iv_back_fp.setOnClickListener {
-            startActivity(SignInActivity.getCallingIntent(this))
-            finish()
-        }
+    override fun onClick(view: View?) {
+        when(view?.id) {
+            R.id.iv_back_fp -> goTo(SignInActivity.getCallingIntent(this))
 
-        iv_close_fp.setOnClickListener {
-            finish()
-        }
+            R.id.iv_close_fp -> finish()
 
-        btn_forgot_password.setOnClickListener {
-            // todo: check if edit texts is empty
-            if (alreadySendUsername) {
-                continuation.setVerificationCode(et_code_fp.text.toString())
-                continuation.setPassword(et_new_password_fp.text.toString())
-                continuation.continueTask()
-            } else {
-                forgotPasswordPresenter.forgotPassword(et_username_fp.text.toString())
+            R.id.btn_forgot_password -> {
+                if (alreadySendUsername) {
+                    if(et_code_fp.text.isEmpty()) {
+                        tv_code_validation_fp.visibility = View.VISIBLE
+                        return
+                    }
+
+                    hideView(tv_code_validation_fp)
+
+                    if(et_new_password_fp.text.isEmpty()) {
+                        tv_new_password_validation_fp.visibility = View.VISIBLE
+                        return
+                    }
+
+                    hideView(tv_new_password_validation_fp)
+
+                    continuation.setVerificationCode(et_code_fp.text.toString())
+                    continuation.setPassword(et_new_password_fp.text.toString())
+                    continuation.continueTask()
+                } else {
+                    if(et_username_fp.text.isEmpty()) {
+                        tv_username_validation_fp.visibility = View.VISIBLE
+                        return
+                    }
+
+                    forgotPasswordPresenter.forgotPassword(et_username_fp.text.toString())
+                }
             }
         }
     }
@@ -92,8 +109,11 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView {
         tv_forgot_password_title.text = resources.getString(R.string.awsco_update_pwd_title_txt)
         tv_forgot_password_description.text = resources.getString(R.string.awsco_update_pwd_desc_txt)
         et_username_fp.visibility = View.GONE
+        tv_username_validation_fp.visibility = View.GONE
         et_code_fp.visibility = View.VISIBLE
+        tv_code_validation_fp.visibility = View.INVISIBLE
         et_new_password_fp.visibility = View.VISIBLE
+        tv_new_password_validation_fp.visibility = View.INVISIBLE
         tv_forgot_password_btn.text = resources.getText(R.string.awsco_update_pwd_btn_txt)
     }
 
@@ -110,8 +130,7 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView {
         builder.setMessage(message)
         builder.setPositiveButton(positiveBtnText) { _, _ ->
             // todo: figure out how to put this in a separate method
-            startActivity(SignInActivity.getCallingIntent(this))
-            finish()
+            goTo(SignInActivity.getCallingIntent(this))
         }
 
         return builder.create()

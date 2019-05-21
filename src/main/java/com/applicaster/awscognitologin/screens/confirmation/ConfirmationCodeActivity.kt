@@ -17,7 +17,7 @@ import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_confirmation_code.*
 import kotlinx.android.synthetic.main.activity_confirmation_code.l_progress
 
-class ConfirmationCodeActivity : AWSActivity(), ConfirmationCodeView {
+class ConfirmationCodeActivity : AWSActivity(), ConfirmationCodeView, View.OnClickListener {
 
     var confirmationCodePresenter: ConfirmationCodePresenter = ConfirmationCodePresenter(
             this, ConfirmationCodeInteractor())
@@ -32,18 +32,24 @@ class ConfirmationCodeActivity : AWSActivity(), ConfirmationCodeView {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_confirmation_code)
+    }
 
-        iv_back_cc.setOnClickListener {
-            startActivity(SignInActivity.getCallingIntent(this))
-            finish()
-        }
+    override fun onClick(view: View?) {
+        when(view?.id) {
+            R.id.iv_back_cc -> goTo(SignInActivity.getCallingIntent(this))
 
-        iv_close_cc.setOnClickListener {
-            finish()
-        }
+            R.id.iv_close_cc -> finish()
 
-        btn_send_code.setOnClickListener {
-            confirmationCodePresenter.sendConfirmationCode(et_username_cc.text.toString())
+            R.id.btn_send_code -> {
+                if(et_username_cc.text.isEmpty()) {
+                    tv_username_validation_cc.visibility = View.VISIBLE
+                    return
+                }
+
+                hideView(tv_username_validation_cc)
+
+                confirmationCodePresenter.sendConfirmationCode(et_username_cc.text.toString())
+            }
         }
     }
 
