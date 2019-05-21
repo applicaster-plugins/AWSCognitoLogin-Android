@@ -5,6 +5,8 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.support.annotation.NonNull
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
@@ -34,22 +36,57 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_sign_in)
+
+        // todo: make this generic
+        et_username_si.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                // do nothing
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                // do nothing
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                p0?.let {
+                    iv_clear_username_si.visibility = if (p0.isEmpty()) View.INVISIBLE else View.VISIBLE
+                }
+            }
+
+        })
+
+        et_password_si.addTextChangedListener(object : TextWatcher {
+            override fun afterTextChanged(p0: Editable?) {
+                // do nothing
+            }
+
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                // do nothing
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                p0?.let {
+                    
+                }
+            }
+
+        })
     }
 
     override fun onClick(view: View?) {
-        when(view?.id) {
+        when (view?.id) {
             R.id.btn_sign_in -> {
                 if (et_username_si.text.isEmpty()) {
                     tv_username_validation.visibility = View.VISIBLE
                     return
                 }
 
-                if(et_password_validation.text.isEmpty()) {
+                if (et_password_si.text.isEmpty()) {
                     tv_password_validation.visibility = View.VISIBLE
                     return
                 }
 
-                signInPresenter.signIn(et_username_si.text.toString(), et_password_validation.text.toString())
+                signInPresenter.signIn(et_username_si.text.toString(), et_password_si.text.toString())
             }
 
             R.id.iv_close_si -> finish()
@@ -59,13 +96,15 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
             R.id.btn_sign_up -> goTo(SignUpActivity.getCallingIntent(this))
 
             R.id.tv_forgot_password -> goTo(ForgotPasswordActivity.getCallingIntent(this))
+
+            R.id.iv_clear_username_si -> et_username_si.text.clear()
         }
     }
 
     override fun setTexts() {
         UIUtils.setText(tv_sign_in_title, "awsco_signin_title_text")
         UIUtils.setText(et_username_si, "awsco_user_input_placeholder_txt")
-        UIUtils.setText(et_password_validation, "awsco_password_input_placeholder_txt")
+        UIUtils.setText(et_password_si, "awsco_password_input_placeholder_txt")
         UIUtils.setText(tv_forgot_password, "awsco_forpas_txt")
         UIUtils.setText(tv_activate_account, "awsco_actacc_txt")
         UIUtils.setText(tv_sign_up_question_btn, "awsco_signup_btn_qt_txt")
@@ -74,21 +113,15 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
 
     override fun applyStyles() {
         UIUtils.applyCrossButtonStyle(v_close_si, "awsco_close_button_color")
-
         cl_sign_in.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
-
         Picasso.get()
                 .load(PluginDataRepository.INSTANCE.params?.get("awsco_logo_image").toString())
                 .into(iv_logo)
-
         UIUtils.applyTitleStyle(tv_sign_in_title)
-
         UIUtils.applyInputStyle(et_username_si)
-        UIUtils.applyInputStyle(et_password_validation)
-
+        UIUtils.applyInputStyle(et_password_si)
         UIUtils.applyButtonStyle(btn_sign_in, tv_sign_in_btn)
         UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_question_btn, tv_sign_up_answer_btn)
-
         UIUtils.applyLinkStyle(tv_forgot_password)
         UIUtils.applyLinkStyle(tv_activate_account)
     }
