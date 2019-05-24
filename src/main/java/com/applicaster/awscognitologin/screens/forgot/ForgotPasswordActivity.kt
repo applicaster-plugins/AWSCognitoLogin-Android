@@ -95,6 +95,9 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView, View.OnClickLi
         UIUtils.applyInputStyle(et_code_fp)
         UIUtils.applyInputStyle(et_new_password_fp)
         UIUtils.applyButtonStyle(btn_forgot_password, tv_forgot_password_btn)
+        UIUtils.addClearButtonToInput(rl_clear_username_fp, et_username_fp)
+        UIUtils.addClearButtonToInput(rl_clear_code_fp, et_code_fp)
+        UIUtils.addClearButtonToInput(rl_clear_new_password_fp, et_new_password_fp)
     }
 
     override fun onForgotPasswordContinuation(continuation: ForgotPasswordContinuation) {
@@ -104,7 +107,7 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView, View.OnClickLi
         // we are using the same ui for both by hiding and showing elements
         tv_forgot_password_title.text = resources.getString(R.string.awsco_update_pwd_title_txt)
         tv_forgot_password_description.text = resources.getString(R.string.awsco_update_pwd_desc_txt)
-        et_username_fp.visibility = View.GONE
+        rl_username_fp.visibility = View.GONE
         tv_username_validation_fp.visibility = View.GONE
         et_code_fp.visibility = View.VISIBLE
         tv_code_validation_fp.visibility = View.INVISIBLE

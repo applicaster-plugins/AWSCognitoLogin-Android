@@ -61,18 +61,13 @@ class ConfirmationCodeActivity : AWSActivity(), ConfirmationCodeView, View.OnCli
 
     override fun applyStyles() {
         UIUtils.applyBackButtonStyle(iv_back_cc)
-
         UIUtils.applyCrossButtonStyle(v_close_cc, "awsco_close_button_color")
-
         cl_confirmation_code.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
-
         UIUtils.applyTitleStyle(tv_confirmation_code_title)
-
         UIUtils.applyDescriptionStyle(tv_confirmation_code_description)
-
         UIUtils.applyInputStyle(et_username_cc)
-
         UIUtils.applyButtonStyle(btn_send_code, tv_send_code_btn)
+        UIUtils.addClearButtonToInput(rl_clear_username_cc, et_username_cc)
     }
 
     override fun onConfirmationCodeSuccess() {

@@ -87,8 +87,6 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
         UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_question_btn, tv_sign_up_answer_btn)
         UIUtils.applyLinkStyle(tv_forgot_password)
         UIUtils.applyLinkStyle(tv_activate_account)
-
-
         UIUtils.addClearButtonToInput(rl_clear_username_si, et_username_si)
         UIUtils.addClearButtonToInput(rl_clear_password_si, et_password_si)
     }

@@ -105,20 +105,14 @@ class SignUpActivity : AWSActivity(), SignUpView, View.OnClickListener {
 
     override fun applyStyles() {
         UIUtils.applyBackButtonStyle(iv_back_reg)
-
         UIUtils.applyCrossButtonStyle(v_close_reg, "awsco_close_button_color")
-
         cl_sign_up.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
-
         UIUtils.applyTitleStyle(tv_registration_title)
-
         UIUtils.applyInputStyle(et_username_su)
         UIUtils.applyInputStyle(et_email_su)
         UIUtils.applyInputStyle(et_password_su)
         UIUtils.applyInputStyle(et_confirm_password_su)
-
         UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_btn)
-
         UIUtils.addClearButtonToInput(rl_clear_username_su, et_username_su)
         UIUtils.addClearButtonToInput(rl_clear_email_su, et_email_su)
         UIUtils.addClearButtonToInput(rl_clear_password_su, et_password_su)

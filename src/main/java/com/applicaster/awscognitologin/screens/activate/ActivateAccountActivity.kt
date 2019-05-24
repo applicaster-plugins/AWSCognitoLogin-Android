@@ -59,25 +59,18 @@ class ActivateAccountActivity : AWSActivity(), ActivateAccountView, View.OnClick
         UIUtils.setText(tv_activate_account_description, "awsco_activation_code_desc_txt")
         UIUtils.setText(et_code_aa, "awsco_code_input_placeholder_txt")
         UIUtils.setText(tv_activate_btn, "awsco_activate_btn_txt")
-        // todo: missing resend code
     }
 
     override fun applyStyles() {
         UIUtils.applyBackButtonStyle(iv_back_aa)
-
         UIUtils.applyCrossButtonStyle(v_close_aa, "awsco_close_button_color")
-
         cl_activate_account.setBackgroundColor(Color.parseColor(PluginDataRepository.INSTANCE.params?.get("awsco_bc_color").toString()))
-
         UIUtils.applyTitleStyle(tv_activate_account_title)
-
         UIUtils.applyDescriptionStyle(tv_activate_account_description)
-
         UIUtils.applyInputStyle(et_code_aa)
-
         UIUtils.applyButtonStyle(btn_activate, tv_activate_btn)
-
         UIUtils.applyLinkStyle(tv_resend_code)
+        UIUtils.addClearButtonToInput(rl_clear_code_aa, et_code_aa)
     }
 
     override fun onActivateAccountSuccess() {

@@ -69,33 +69,70 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_activate_account_title" />
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/et_code_aa"
-        style="@style/InputStyle"
-        android:layout_width="match_parent"
+    <RelativeLayout
+        android:id="@+id/rl_code_aa"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/field_margin"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="@dimen/field_margin"
-        android:ems="10"
-        android:hint="@string/code"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_activate_account_description"
-        app:met_floatingLabel="normal"
-        app:met_underlineColor="@color/awsco_input_ulc" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_activate_account_description">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_code_aa"
+            style="@style/InputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/field_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/field_margin"
+            android:ems="10"
+            android:hint="@string/code"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:met_floatingLabel="normal"
+            app:met_underlineColor="@color/awsco_input_ulc" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_clear_code_aa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/field_margin"
+            android:visibility="invisible">
+
+            <View
+                android:id="@+id/v_clear_code_aa"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/circle" />
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/cancel" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_code_validation_aa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/field_margin"
         android:text="@string/field_required"
         android:textColor="@color/awsco_validation_txt_color"
         android:textSize="@dimen/awsco_validation_fontsize"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/et_code_aa"
-        app:layout_constraintTop_toBottomOf="@+id/et_code_aa" />
+        app:layout_constraintEnd_toEndOf="@+id/rl_code_aa"
+        app:layout_constraintTop_toBottomOf="@+id/rl_code_aa" />
 
     <LinearLayout
         android:id="@+id/btn_activate"
