@@ -73,23 +73,22 @@
             android:id="@+id/et_username_si"
             style="@style/InputStyle"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/field_margin"
             android:layout_marginEnd="@dimen/field_margin"
-            android:layout_height="wrap_content"
             android:hint="@string/awsco_user_input_placeholder_txt"
             android:inputType="textPersonName"
             app:met_floatingLabel="normal"
             app:met_underlineColor="@color/awsco_input_ulc" />
 
         <RelativeLayout
-            android:id="@+id/iv_clear_username_si"
+            android:id="@+id/rl_clear_username_si"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:visibility="invisible"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/field_margin"
-            android:onClick="onClick">
+            android:visibility="invisible">
 
             <View
                 android:id="@+id/v_clear_username_si"
@@ -118,6 +117,17 @@
         app:layout_constraintEnd_toEndOf="@+id/rl_username_si"
         app:layout_constraintTop_toBottomOf="@+id/rl_username_si" />
 
+    <RelativeLayout
+        android:id="@+id/rl_password_si"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/field_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/field_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_username_validation">
+
         <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/et_password_si"
             style="@style/InputStyle"
@@ -131,9 +141,33 @@
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_username_validation"
             app:met_floatingLabel="normal"
             app:met_underlineColor="@color/awsco_input_ulc" />
+
+        <RelativeLayout
+            android:id="@+id/rl_clear_password_si"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/field_margin"
+            android:visibility="invisible">
+
+            <View
+                android:id="@+id/v_clear_password_si"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/circle" />
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/cancel" />
+        </RelativeLayout>
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_password_validation"
@@ -143,8 +177,9 @@
         android:textColor="@color/awsco_validation_txt_color"
         android:textSize="@dimen/awsco_validation_fontsize"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="@+id/et_password_si"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_si" />
+        android:layout_marginEnd="@dimen/field_margin"
+        app:layout_constraintEnd_toEndOf="@+id/rl_password_si"
+        app:layout_constraintTop_toBottomOf="@+id/rl_password_si" />
 
     <TextView
         android:id="@+id/tv_forgot_password"
@@ -173,7 +208,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_si">
+        app:layout_constraintTop_toBottomOf="@+id/rl_password_si">
 
         <TextView
             android:id="@+id/tv_sign_in_btn"

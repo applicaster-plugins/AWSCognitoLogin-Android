@@ -6,14 +6,15 @@ import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.ShapeDrawable
 import android.support.v7.app.AlertDialog
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
 import com.rengwuxian.materialedittext.MaterialEditText
+import kotlinx.android.synthetic.main.activity_sign_in.*
 
 class UIUtils {
     companion object {
@@ -110,6 +111,28 @@ class UIUtils {
             builder.setPositiveButton(positiveBtnText, listener)
 
             return builder.create()
+        }
+
+        fun addClearButtonToInput(ivClearMessage: RelativeLayout, inputField: EditText) {
+            inputField.addTextChangedListener(object : TextWatcher {
+                override fun afterTextChanged(p0: Editable?) {
+                    // do nothing
+                }
+
+                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    // do nothing
+                }
+
+                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                    p0?.let {
+                        ivClearMessage.visibility = if (p0.isEmpty()) View.INVISIBLE else View.VISIBLE
+                        ivClearMessage.setOnClickListener {
+                            inputField.text.clear()
+                        }
+                    }
+                }
+
+            })
         }
     }
 }

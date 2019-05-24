@@ -118,6 +118,11 @@ class SignUpActivity : AWSActivity(), SignUpView, View.OnClickListener {
         UIUtils.applyInputStyle(et_confirm_password_su)
 
         UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_btn)
+
+        UIUtils.addClearButtonToInput(rl_clear_username_su, et_username_su)
+        UIUtils.addClearButtonToInput(rl_clear_email_su, et_email_su)
+        UIUtils.addClearButtonToInput(rl_clear_password_su, et_password_su)
+        UIUtils.addClearButtonToInput(rl_clear_confirm_password_su, et_confirm_password_su)
     }
 
     override fun onSignUpSuccess() {

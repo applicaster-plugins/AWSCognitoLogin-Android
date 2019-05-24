@@ -36,41 +36,6 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_sign_in)
-
-        // todo: make this generic
-        et_username_si.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-                // do nothing
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                // do nothing
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                p0?.let {
-                    iv_clear_username_si.visibility = if (p0.isEmpty()) View.INVISIBLE else View.VISIBLE
-                }
-            }
-
-        })
-
-        et_password_si.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-                // do nothing
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                // do nothing
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                p0?.let {
-                    
-                }
-            }
-
-        })
     }
 
     override fun onClick(view: View?) {
@@ -96,8 +61,6 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
             R.id.btn_sign_up -> goTo(SignUpActivity.getCallingIntent(this))
 
             R.id.tv_forgot_password -> goTo(ForgotPasswordActivity.getCallingIntent(this))
-
-            R.id.iv_clear_username_si -> et_username_si.text.clear()
         }
     }
 
@@ -124,6 +87,10 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
         UIUtils.applyButtonStyle(btn_sign_up, tv_sign_up_question_btn, tv_sign_up_answer_btn)
         UIUtils.applyLinkStyle(tv_forgot_password)
         UIUtils.applyLinkStyle(tv_activate_account)
+
+
+        UIUtils.addClearButtonToInput(rl_clear_username_si, et_username_si)
+        UIUtils.addClearButtonToInput(rl_clear_password_si, et_password_si)
     }
 
     override fun onSignInSuccess() {
