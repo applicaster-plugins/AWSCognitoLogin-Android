@@ -9,7 +9,7 @@
   "platform": "android",
   "author_name": "Juan Hernandez",
   "author_email": "j.hernandez@applicaster.com",
-  "manifest_version": "0.0.1",
+  "manifest_version": "0.1.0",
   "name": "AWSCognitoLogin",
   "description": "Plugin to connect AWS Login services to our apps",
   "type": "login",
@@ -17,9 +17,10 @@
   "identifier": "AWSCognitoLogin",
   "ui_builder_support": true,
   "dependency_name": "com.applicaster:AWSCognitoLogin-Android",
-  "dependency_version": "0.0.1",
+  "dependency_version": "0.1.0",
   "whitelisted_account_ids": [
-    "5bb621649adec2000c289f22"
+    "5bb621649adec2000c289f22",
+    "5c47af22291767000c8c9065"
   ],
   "min_zapp_sdk": "8.0.0",
   "deprecated_since_zapp_sdk": "",
@@ -45,6 +46,266 @@
         "key": "userpoolid",
         "tooltip_text": "User pool id",
         "type": "text"
+      },
+      {
+      "key": "awsco_bc_color",
+      "tooltip_text": "Background Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_close_button_color",
+      "tooltip_text": "Close Button Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_logo_image",
+      "tooltip_text": "Logo image",
+      "type": "uploader"
+      },
+      {
+      "key": "awsco_input_erbc",
+      "tooltip_text": "Erase button color",
+      "type": "colorpicker"
+      },
+      // input field style
+      {
+      "key": "awsco_input_ulc",
+      "tooltip_text": "Underline Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_input_fontsize",
+      "tooltip_text": "Text Font Size",
+      "type": "text"
+      },
+      {
+      "key": "awsco_input_txt_color",
+      "tooltip_text": "Text Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_validation_fontsize",
+      "tooltip_text": "Validation Font Size",
+      "type": "text"
+      },
+      {
+      "key": "awsco_validation_txt_color",
+      "tooltip_text": "Validation Text Color",
+      "type": "colorpicker"
+      },
+      // end of input field style
+      {
+      "key": "awsco_user_input_placeholder_txt",
+      "tooltip_text": "Placeholder Text for user",
+      "type": "text"
+      },
+      {
+      "key": "awsco_password_input_placeholder_txt",
+      "tooltip_text": "Placeholder Text for password",
+      "type": "text"
+      },
+      {
+      "key": "awsco_password_confirmation_input_placeholder_txt",
+      "tooltip_text": "Placeholder Text for password confirmation",
+      "type": "text"
+      },
+      {
+      "key": "awsco_code_input_placeholder_txt",
+      "tooltip_text": "Placeholder Text for code",
+      "type": "text"
+      },
+      {
+      "key": "awsco_email_input_placeholder_txt",
+      "tooltip_text": "Placeholder Text for email",
+      "type": "text"
+      },
+      {
+      "key": "awsco_new_pwd_input_placeholder_txt",
+      "tooltip_text": "Placeholder Text for new password",
+      "type": "text"
+      },
+      // button style
+      {
+      "key": "awsco_btn_txt_color",
+      "tooltip_text": "Button Text Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_btn_fontsize",
+      "tooltip_text": "Button Font Size",
+      "type": "text"
+      },
+      {
+      "key": "awsco_btn_color",
+      "tooltip_text": "Button Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_btn_br_color",
+      "tooltip_text": "Button Border Color",
+      "type": "colorpicker"
+      },
+      // end of button style
+      // link style
+      {
+      "key": "awsco_link_color",
+      "tooltip_text": "Link Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_link_fontsize",
+      "tooltip_text": "Link Font Size",
+      "type": "text"
+      },
+      // end of link style
+      {
+      "key": "awsco_forpas_txt",
+      "tooltip_text": "Forgot Password Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_actacc_txt",
+      "tooltip_text": "Activate Account Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_signup_btn_qt_txt",
+      "tooltip_text": "SignUp Question Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_signup_btn_answ_text",
+      "tooltip_text": "SignUp Answer Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_signup_btn_color",
+      "tooltip_text": "SignUp Button Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_backbutton_fontsize",
+      "tooltip_text": "Back Button Font Size",
+      "type": "text"
+      },
+      {
+      "key": "awsco_backbutton_color",
+      "tooltip_text": "Back Button Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_backicon_color",
+      "tooltip_text": "Back Button Icon Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_signin_title_text",
+      "tooltip_text": "Login Screen Title Text",
+      "type": "text"
+      },
+      // title style
+      {
+      "key": "awsco_view_title_color",
+      "tooltip_text": "Title Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_view_title_fontsize",
+      "tooltip_text": "Title Font Size",
+      "type": "text"
+      },
+      // end of title style
+      // description style
+      {
+      "key": "awsco_view_desc_txt_color",
+      "tooltip_text": "Title Color",
+      "type": "colorpicker"
+      },
+      {
+      "key": "awsco_view_desc_txt_fontsize",
+      "tooltip_text": "Title Font Size",
+      "type": "text"
+      },
+      // end of description style
+      {
+      "key": "awsco_sign_in_btn_text",
+      "tooltip_text": "Login Screen Sign In Button Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_confirmation_title_txt",
+      "tooltip_text": "Confirmation Screen Title Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_confirmation_desc_txt",
+      "tooltip_text": "Confirmation Screen Description Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_send_code_btn_txt",
+      "tooltip_text": "Confirmation Screen Send Code Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_activation_code_title_txt",
+      "tooltip_text": "Activation Screen Title Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_activation_code_desc_txt",
+      "tooltip_text": "Activation Screen Description Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_activate_btn_txt",
+      "tooltip_text": "Activation Screen Send Code Button Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_activation_resend_code_btn_txt",
+      "tooltip_text": "Activation Screen Resend Code Button Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_registration_code_title_txt",
+      "tooltip_text": "Registration Screen Title Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_registration_sign_up_btn_txt",
+      "tooltip_text": "Registration Sign Up Button Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_forgot_pwd_title_txt",
+      "tooltip_text": "Forgot Password Screen Title Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_forgot_pwd_desc_txt",
+      "tooltip_text": "Forgot Password Screen Description Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_send_forgot_pwd_btn_txt",
+      "tooltip_text": "Forgot Password Send Button Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_update_pwd_title_txt",
+      "tooltip_text": "Update Password Screen Title Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_update_pwd_desc_txt",
+      "tooltip_text": "Update Password Screen Description Text",
+      "type": "text"
+      },
+      {
+      "key": "awsco_update_pwd_btn_txt",
+      "tooltip_text": "Update Password Update Button Text",
+      "type": "text"
       }
   ]
 }

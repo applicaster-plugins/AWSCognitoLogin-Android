@@ -1,9 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cl_activate_account"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/awsco_bc_color">
+
+    <ImageView
+        android:id="@+id/iv_back_aa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="onClick"
+        android:src="@drawable/back_arrow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        android:id="@+id/iv_close_aa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:onClick="onClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:id="@+id/v_close_aa"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/circle" />
+
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/cancel" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/tv_activate_account_title"
@@ -21,63 +57,116 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_activate_account_indication"
-        android:layout_width="wrap_content"
+        android:id="@+id/tv_activate_account_description"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="@dimen/field_margin"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="@dimen/field_margin"
+        android:gravity="center"
         android:text="@string/enter_the_code_sent_to_your_email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_activate_account_title" />
 
-    <com.rengwuxian.materialedittext.MaterialEditText
-        android:id="@+id/et_code_aa"
-        style="@style/InputStyle"
-        android:layout_width="@dimen/et_field_width"
+    <RelativeLayout
+        android:id="@+id/rl_code_aa"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="@string/code"
-        android:inputType="number"
+        android:layout_marginStart="@dimen/field_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/field_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_activate_account_indication"
-        app:met_floatingLabel="normal"
-        app:met_underlineColor="@color/awsco_input_ulc" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_activate_account_description">
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/et_code_aa"
+            style="@style/InputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/field_margin"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="@dimen/field_margin"
+            android:ems="10"
+            android:hint="@string/code"
+            android:inputType="number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:met_floatingLabel="normal"
+            app:met_underlineColor="@color/awsco_input_ulc" />
+
+
+        <RelativeLayout
+            android:id="@+id/rl_clear_code_aa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/field_margin"
+            android:visibility="invisible">
+
+            <View
+                android:id="@+id/v_clear_code_aa"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerInParent="true"
+                android:background="@drawable/circle" />
+
+            <ImageView
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/cancel" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_code_validation_aa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/field_margin"
+        android:text="@string/field_required"
+        android:textColor="@color/awsco_validation_txt_color"
+        android:textSize="@dimen/awsco_validation_fontsize"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/rl_code_aa"
+        app:layout_constraintTop_toBottomOf="@+id/rl_code_aa" />
 
     <LinearLayout
         android:id="@+id/btn_activate"
-        android:layout_width="190dp"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginStart="@dimen/field_margin"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="@dimen/field_margin"
         android:background="@drawable/aws_btn_background"
         android:gravity="center"
+        android:onClick="onClick"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_code_aa">
+        app:layout_constraintTop_toBottomOf="@+id/tv_code_validation_aa">
 
         <TextView
+            android:id="@+id/tv_activate_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Activate"
+            android:text="@string/activate"
             android:textColor="@color/awsco_btn_txt_color"
             android:textSize="@dimen/awsco_btn_fontsize" />
     </LinearLayout>
 
+    <!-- TODO: implement resend code functionality -->
     <TextView
         android:id="@+id/tv_resend_code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Resend Code"
+        android:text="@string/resend_code"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/btn_activate"
         app:layout_constraintTop_toBottomOf="@+id/btn_activate" />
 

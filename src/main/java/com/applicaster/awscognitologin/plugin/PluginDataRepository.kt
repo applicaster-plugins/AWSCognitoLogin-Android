@@ -34,7 +34,7 @@ enum class PluginDataRepository : PluginRepository {
         }
 
         override fun setPassword(password: String) {
-           PreferenceUtil.getInstance().setStringPref(PASSWORD, password)
+            PreferenceUtil.getInstance().setStringPref(PASSWORD, password)
         }
 
         override fun getToken(): String {
@@ -61,7 +61,7 @@ enum class PluginDataRepository : PluginRepository {
             PreferenceUtil.getInstance().setStringPref(CLIENT_ID, clientId)
         }
 
-        override fun getClientSecret() : String {
+        override fun getClientSecret(): String {
             return PreferenceUtil.getInstance().getStringPref(CLIENT_SECRET, "")
         }
 
@@ -77,6 +77,8 @@ enum class PluginDataRepository : PluginRepository {
             PreferenceUtil.getInstance().setStringPref(REGION, region)
         }
     };
+
+    var params: MutableMap<Any?, Any?>? = null
 
     fun updateCredentials(token: String?) {
         setToken(token)
