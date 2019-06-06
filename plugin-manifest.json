@@ -9,7 +9,7 @@
   "platform": "android",
   "author_name": "Juan Hernandez",
   "author_email": "j.hernandez@applicaster.com",
-  "manifest_version": "0.0.1",
+  "manifest_version": "0.1.0",
   "name": "AWSCognitoLogin",
   "description": "Plugin to connect AWS Login services to our apps",
   "type": "login",
@@ -17,7 +17,7 @@
   "identifier": "AWSCognitoLogin",
   "ui_builder_support": true,
   "dependency_name": "com.applicaster:AWSCognitoLogin-Android",
-  "dependency_version": "0.0.1",
+  "dependency_version": "0.1.0",
   "whitelisted_account_ids": [
     "5bb621649adec2000c289f22",
     "5c47af22291767000c8c9065"
