@@ -105,15 +105,18 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView, View.OnClickLi
         this.continuation = continuation
         // since AWS forgot and reset password are together in the same method
         // we are using the same ui for both by hiding and showing elements
-        tv_forgot_password_title.text = resources.getString(R.string.awsco_update_pwd_title_txt)
-        tv_forgot_password_description.text = resources.getString(R.string.awsco_update_pwd_desc_txt)
         rl_username_fp.visibility = View.GONE
         tv_username_validation_fp.visibility = View.GONE
         et_code_fp.visibility = View.VISIBLE
         tv_code_validation_fp.visibility = View.INVISIBLE
         et_new_password_fp.visibility = View.VISIBLE
         tv_new_password_validation_fp.visibility = View.INVISIBLE
-        tv_forgot_password_btn.text = resources.getText(R.string.awsco_update_pwd_btn_txt)
+
+        UIUtils.setText(tv_forgot_password_title, "awsco_update_pwd_title_txt")
+        UIUtils.setText(tv_forgot_password_description, "awsco_update_pwd_desc_txt")
+        UIUtils.setText(tv_forgot_password_btn, "awsco_update_pwd_btn_txt")
+        UIUtils.setText(et_new_password_fp, "awsco_new_pwd_input_placeholder_txt")
+        UIUtils.setText(et_code_fp, "awsco_code_input_placeholder_txt")
     }
 
     override fun onForgotPasswordSuccess() {

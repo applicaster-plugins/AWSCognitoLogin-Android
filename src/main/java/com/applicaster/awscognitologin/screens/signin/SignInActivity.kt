@@ -72,6 +72,7 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
         UIUtils.setText(tv_activate_account, "awsco_actacc_txt")
         UIUtils.setText(tv_sign_up_question_btn, "awsco_signup_btn_qt_txt")
         UIUtils.setText(tv_sign_up_answer_btn, "awsco_signup_btn_answ_text")
+        UIUtils.setText(tv_sign_in_btn, "awsco_sign_in_btn_text")
     }
 
     override fun applyStyles() {
