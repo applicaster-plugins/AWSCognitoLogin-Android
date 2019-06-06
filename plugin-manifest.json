@@ -19,7 +19,8 @@
   "dependency_name": "com.applicaster:AWSCognitoLogin-Android",
   "dependency_version": "0.0.1",
   "whitelisted_account_ids": [
-    "5bb621649adec2000c289f22"
+    "5bb621649adec2000c289f22",
+    "5c47af22291767000c8c9065"
   ],
   "min_zapp_sdk": "8.0.0",
   "deprecated_since_zapp_sdk": "",
@@ -111,7 +112,7 @@
       {
       "key": "awsco_code_input_placeholder_txt",
       "tooltip_text": "Placeholder Text for code",
-      "type": "Text"
+      "type": "text"
       },
       {
       "key": "awsco_email_input_placeholder_txt",

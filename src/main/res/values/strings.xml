@@ -32,4 +32,15 @@
     <string name="invalid_email">Invalid email</string>
     <string name="resend_code">Resend Code</string>
     <string name="activate">Activate</string>
+    <string name="on_activate_account_success">Your account was activated successfully</string>
+    <string name="on_activate_account_failed_title">Account Activation Failed</string>
+    <string name="on_activate_account_failed_message">Your account couldn\'t be activated. Please try again later.</string>
+    <string name="on_confirmation_code_failed_title">Error Sending Confirmation Code</string>
+    <string name="on_confirmation_code_failed_message">There was an error sending the confirmation code. Please, try again.</string>
+    <string name="on_forgot_password_failed_title">Error</string>
+    <string name="on_forgot_password_failed_message">There was an error. Please, try again.</string>
+    <string name="on_sign_in_failed_title">Sign In Failed</string>
+    <string name="on_sign_in_failed_message">There was an error signing in. Please check your username and password and try again.</string>
+    <string name="on_sign_up_failed_title">Sign Up Failed</string>
+    <string name="on_sign_up_failed_message">There was an error signing you up. Please, check if your password complies with our website.</string>
 </resources>

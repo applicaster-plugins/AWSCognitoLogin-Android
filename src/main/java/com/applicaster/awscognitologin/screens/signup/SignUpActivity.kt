@@ -125,13 +125,15 @@ class SignUpActivity : AWSActivity(), SignUpView, View.OnClickListener {
     }
 
     override fun onUserIsNotConfirmed(cognitoUserCodeDeliveryDetails: CognitoUserCodeDeliveryDetails) {
-        Toaster.makeToast(this, "onUserIsNotConfirmed")
         startActivity(ActivateAccountActivity.getCallingIntent(this))
         finish()
     }
 
     override fun onSignUpFailed(exception: Exception) {
-        Toaster.makeToast(this, exception.message)
+        // todo: value password policies and show user what they are
+        UIUtils.getAlertDialog(this, this.getString(R.string.on_sign_up_failed_title),
+                this.getString(R.string.on_sign_up_failed_message), this.getString(R.string.ok_btn))
+                .show()
     }
 
     override fun showProgress() {

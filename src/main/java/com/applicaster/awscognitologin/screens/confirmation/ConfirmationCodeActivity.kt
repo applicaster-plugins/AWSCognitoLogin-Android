@@ -76,7 +76,9 @@ class ConfirmationCodeActivity : AWSActivity(), ConfirmationCodeView, View.OnCli
     }
 
     override fun onConfirmationCodeFail(error: String) {
-        Toaster.makeToast(this, error)
+        UIUtils.getAlertDialog(this, this.getString(R.string.on_confirmation_code_failed_title),
+                this.getString(R.string.on_confirmation_code_failed_message), this.getString(R.string.ok_btn))
+                .show()
     }
 
     override fun showProgress() {

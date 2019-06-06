@@ -103,6 +103,13 @@ class UIUtils {
         }
 
         fun getAlertDialog(context: Context, title: String, message: String,
+                           positiveBtnText: String)
+                : AlertDialog {
+            return getAlertDialog(context, title, message, positiveBtnText,
+                    DialogInterface.OnClickListener { dialogInterface, _ -> dialogInterface.dismiss() })
+        }
+
+        fun getAlertDialog(context: Context, title: String, message: String,
                                    positiveBtnText: String, listener: DialogInterface.OnClickListener)
                 : AlertDialog {
             val builder = AlertDialog.Builder(context, R.style.AlertDialogCustom)

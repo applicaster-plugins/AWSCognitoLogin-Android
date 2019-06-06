@@ -97,7 +97,9 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
     }
 
     override fun onSignInFail(message: String) {
-        Toaster.makeToast(this, "onSignInFail")
+        UIUtils.getAlertDialog(this, this.getString(R.string.on_sign_in_failed_title),
+                this.getString(R.string.on_sign_in_failed_message), this.getString(R.string.ok_btn))
+                .show()
     }
 
     override fun showProgress() {

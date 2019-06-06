@@ -38,11 +38,11 @@ class ActivateAccountActivity : AWSActivity(), ActivateAccountView, View.OnClick
     }
 
     override fun onClick(view: View?) {
-        when(view?.id) {
+        when (view?.id) {
             R.id.iv_back_aa -> goTo(SignInActivity.getCallingIntent(this))
             R.id.iv_close_aa -> finish()
             R.id.btn_activate -> {
-                if(et_code_aa.text.isNotEmpty()) {
+                if (et_code_aa.text.toString().isEmpty()) {
                     tv_code_validation_aa.visibility = View.VISIBLE
                     return
                 }
@@ -74,15 +74,15 @@ class ActivateAccountActivity : AWSActivity(), ActivateAccountView, View.OnClick
     }
 
     override fun onActivateAccountSuccess() {
-        // todo: play video
-        Toaster.makeToast(this, "onActivateAccountSuccess")
+        Toaster.makeToast(this, this.getString(R.string.on_activate_account_success))
         LoginManager.notifyEvent(this, LoginManager.RequestType.LOGIN, true)
         finish()
     }
 
     override fun onActivateAccountFail(exception: Exception?) {
-        // todo: show error message
-        Toaster.makeToast(this, exception?.message)
+        UIUtils.getAlertDialog(this, this.getString(R.string.on_activate_account_failed_title),
+                this.getString(R.string.on_activate_account_failed_message), this.getString(R.string.ok_btn))
+                .show()
     }
 
     override fun showProgress() {

@@ -125,7 +125,9 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView, View.OnClickLi
     }
 
     override fun onForgotPasswordFail(error: String) {
-        Toaster.makeToast(this, "onForgotPasswordFail")
+        UIUtils.getAlertDialog(this, this.getString(R.string.on_forgot_password_failed_title),
+                this.getString(R.string.on_forgot_password_failed_message), this.getString(R.string.ok_btn))
+                .show()
     }
 
     override fun showProgress() {
