@@ -3,7 +3,7 @@ package com.applicaster.awscognitologin
 import android.content.Context
 import android.content.DialogInterface
 import android.util.Log
-import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserPool
+import com.applicaster.atom.model.APAtomEntry
 import com.applicaster.awscognitologin.data.AWSCognitoManager
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
@@ -11,20 +11,17 @@ import com.applicaster.awscognitologin.screens.signin.SignInInteractor
 import com.applicaster.awscognitologin.utils.Constants.Companion.CLIENT_ID
 import com.applicaster.awscognitologin.utils.Constants.Companion.CLIENT_SECRET
 import com.applicaster.awscognitologin.utils.Constants.Companion.REGION
-import com.applicaster.awscognitologin.utils.Constants.Companion.TOKEN
 import com.applicaster.awscognitologin.utils.Constants.Companion.USER_POOL_ID
 import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.model.APCategory
 import com.applicaster.model.APChannel
 import com.applicaster.model.APURLPlayable
 import com.applicaster.model.APVodItem
-import com.applicaster.plugin_manager.Plugin
 import com.applicaster.plugin_manager.hook.HookListener
 import com.applicaster.plugin_manager.login.AsyncLoginContract
 import com.applicaster.plugin_manager.login.LoginContract
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.plugin_manager.playersmanager.Playable
-import com.applicaster.util.PreferenceUtil
 import com.applicaster.util.ui.Toaster
 
 class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback, SignInInteractor.OnSignInFinishedListener {
@@ -68,18 +65,25 @@ class AWSCognitoLoginContract : AsyncLoginContract(), LoginContract.Callback, Si
     }
 
     override fun isItemLocked(model: Any?): Boolean {
-//        model?.let {
-//            if(model is APVodItem && model.isFree) return false
-//            if(model is APURLPlayable && model.isFree) return false
-//            if(model is APCategory && model.isFree) return false
-//            if(model is APChannel && model.isFree) return false
-//        }
+        model?.let {
+            if (model is APVodItem && model.isFree) return false
+            if (model is APURLPlayable && model.isFree) return false
+            if (model is APCategory && model.isFree) return false
+            if (model is APChannel && model.isFree) return false
+            if (model is APAtomEntry && model.isFree) return false
+        }
 
         return true
     }
 
     override fun isItemLocked(context: Context?, model: Any?, callback: LoginContract.Callback?) {
-        // do nothing?
+        model?.let {
+            if (model is APVodItem && model.isFree) callback?.onResult(false)
+            if (model is APURLPlayable && model.isFree) callback?.onResult(false)
+            if (model is APCategory && model.isFree) callback?.onResult(false)
+            if (model is APChannel && model.isFree) callback?.onResult(false)
+            if (model is APAtomEntry.APAtomEntryPlayable && model.isFree) callback?.onResult(false)
+        } ?:  callback?.onResult(true)
     }
 
     override fun onResult(result: Boolean) {
