@@ -41,14 +41,18 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.btn_sign_in -> {
-                if (et_username_si.text.isEmpty()) {
-                    tv_username_validation.visibility = View.VISIBLE
-                    return
+                et_username_si.text?.let {
+                    if (it.isEmpty()) {
+                        tv_username_validation.visibility = View.VISIBLE
+                        return
+                    }
                 }
 
-                if (et_password_si.text.isEmpty()) {
-                    tv_password_validation.visibility = View.VISIBLE
-                    return
+                et_password_si.text?.let {
+                    if (it.isEmpty()) {
+                        tv_password_validation.visibility = View.VISIBLE
+                        return
+                    }
                 }
 
                 signInPresenter.signIn(et_username_si.text.toString(), et_password_si.text.toString())

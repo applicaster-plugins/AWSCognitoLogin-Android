@@ -41,9 +41,10 @@ class ConfirmationCodeActivity : AWSActivity(), ConfirmationCodeView, View.OnCli
             R.id.iv_close_cc -> finish()
 
             R.id.btn_send_code -> {
-                if(et_username_cc.text.isEmpty()) {
-                    tv_username_validation_cc.visibility = View.VISIBLE
-                    return
+                et_username_cc.text?.let {
+                    if(it.isEmpty()) {
+                        tv_username_validation_cc.visibility = View.VISIBLE
+                    }
                 }
 
                 hideView(tv_username_validation_cc)

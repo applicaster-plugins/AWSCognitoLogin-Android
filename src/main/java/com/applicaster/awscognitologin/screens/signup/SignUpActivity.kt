@@ -45,28 +45,36 @@ class SignUpActivity : AWSActivity(), SignUpView, View.OnClickListener {
             R.id.iv_close_reg -> finish()
 
             R.id.btn_sign_up -> {
-                if(et_username_su.text.isEmpty()) {
-                    tv_username_validation_su.visibility = View.VISIBLE
-                    return
+                et_username_su.text?.let {
+                    if(it.isEmpty()) {
+                        tv_username_validation_su.visibility = View.VISIBLE
+                        return
+                    }
                 }
 
                 hideView(tv_username_validation_su)
 
-                if(et_email_su.text.isEmpty()) {
-                    tv_email_validation_su.visibility = View.VISIBLE
-                    return
+                et_email_su.text?.let {
+                    if(it.isEmpty()) {
+                        tv_email_validation_su.visibility = View.VISIBLE
+                        return
+                    }
                 }
 
-                if(et_password_su.text.isEmpty()) {
-                    tv_password_validation_su.visibility = View.VISIBLE
-                    return
+                et_password_su.text?.let {
+                    if(it.isEmpty()) {
+                        tv_password_validation_su.visibility = View.VISIBLE
+                        return
+                    }
                 }
 
                 hideView(tv_password_validation_su)
 
-                if(et_confirm_password_su.text.isEmpty()) {
-                    tv_confirm_password_validation_su.visibility = View.VISIBLE
-                    return
+                et_confirm_password_su.text?.let {
+                    if(it.isEmpty()) {
+                        tv_confirm_password_validation_su.visibility = View.VISIBLE
+                        return
+                    }
                 }
 
                 if(!Patterns.EMAIL_ADDRESS.matcher(et_email_su.text.toString()).matches()) {
