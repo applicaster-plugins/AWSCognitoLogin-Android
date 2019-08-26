@@ -42,23 +42,29 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView, View.OnClickLi
     }
 
     override fun onClick(view: View?) {
-        when(view?.id) {
+        when (view?.id) {
             R.id.iv_back_fp -> goTo(SignInActivity.getCallingIntent(this))
 
             R.id.iv_close_fp -> finish()
 
             R.id.btn_forgot_password -> {
                 if (alreadySendUsername) {
-                    if(et_code_fp.text.isEmpty()) {
-                        tv_code_validation_fp.visibility = View.VISIBLE
-                        return
+
+                    et_code_fp.text?.let {
+                        if (it.isEmpty()) {
+                            tv_code_validation_fp.visibility = View.VISIBLE
+                            return
+                        }
                     }
+
 
                     hideView(tv_code_validation_fp)
 
-                    if(et_new_password_fp.text.isEmpty()) {
-                        tv_new_password_validation_fp.visibility = View.VISIBLE
-                        return
+                    et_new_password_fp.text?.let {
+                        if (it.isEmpty()) {
+                            tv_new_password_validation_fp.visibility = View.VISIBLE
+                            return
+                        }
                     }
 
                     hideView(tv_new_password_validation_fp)
@@ -67,9 +73,11 @@ class ForgotPasswordActivity : AWSActivity(), ForgotPasswordView, View.OnClickLi
                     continuation.setPassword(et_new_password_fp.text.toString())
                     continuation.continueTask()
                 } else {
-                    if(et_username_fp.text.isEmpty()) {
-                        tv_username_validation_fp.visibility = View.VISIBLE
-                        return
+                    et_username_fp.text?.let {
+                        if (it.isEmpty()) {
+                            tv_username_validation_fp.visibility = View.VISIBLE
+                            return
+                        }
                     }
 
                     forgotPasswordPresenter.forgotPassword(et_username_fp.text.toString())
