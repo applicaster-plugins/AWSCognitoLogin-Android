@@ -43,4 +43,6 @@
     <string name="on_sign_in_failed_message">There was an error signing in. Please check your username and password and try again.</string>
     <string name="on_sign_up_failed_title">Sign Up Failed</string>
     <string name="on_sign_up_failed_message">There was an error signing you up. Please, check if your password complies with our website.</string>
+    <string name="on_username_failed_pattern">Username is not valid. Please choose another.</string>
+    <string name="on_sign_up_failed_username_doesnt_exists">Username exists already.</string>
 </resources>
