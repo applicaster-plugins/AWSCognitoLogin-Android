@@ -43,4 +43,6 @@
     <string name="on_sign_in_failed_message">Hubo un error entrando en su cuenta. Por favor, chequee sus credenciales y trate de nuevo.</string>
     <string name="on_sign_up_failed_title">Registro fallado</string>
     <string name="on_sign_up_failed_message">Hubo un error creando su cuenta. Por favor, chequee si su contraseña cumple con los requerimientos del website.</string>
+    <string name="on_username_failed_pattern">El usuario no es valido. Por favor elige otro.</string>
+    <string name="on_sign_up_failed_username_doesnt_exists">El nombre de usuario entrado ya existe.</string>
 </resources>

@@ -107,6 +107,11 @@ class SignInActivity : AWSActivity(), SignInView, View.OnClickListener {
                 .show()
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        LoginManager.notifyEvent(this, LoginManager.RequestType.LOGIN, false)
+    }
+
     override fun showProgress() {
         l_progress.visibility = View.VISIBLE
     }

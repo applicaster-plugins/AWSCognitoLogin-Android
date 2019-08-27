@@ -13,8 +13,11 @@ import android.widget.*
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.signin.SignInActivity
+import com.applicaster.util.StringUtil
 import com.rengwuxian.materialedittext.MaterialEditText
 import kotlinx.android.synthetic.main.activity_sign_in.*
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 class UIUtils {
     companion object {
@@ -102,6 +105,15 @@ class UIUtils {
             }
         }
 
+        fun getPasswordFailMessage(context: Context): String {
+            params?.let {
+                val message = params["awsco_password_error_message"].toString()
+                return if (message != "null") message else context.getString(R.string.on_sign_up_failed_message)
+            }
+
+            return context.getString(R.string.on_sign_up_failed_message)
+        }
+
         fun getAlertDialog(context: Context, title: String, message: String,
                            positiveBtnText: String)
                 : AlertDialog {
@@ -140,6 +152,13 @@ class UIUtils {
                 }
 
             })
+        }
+
+        fun checkIfUsernameMatchesPattern(string: String): Boolean {
+            val patternStr = "^(?=.{8,20}\$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])\$"
+            val pattern: Pattern = Pattern.compile(patternStr)
+            val matcher: Matcher = pattern.matcher(string)
+            return matcher.matches()
         }
     }
 }

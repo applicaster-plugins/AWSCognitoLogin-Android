@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Patterns
 import android.view.View
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUserCodeDeliveryDetails
+import com.amazonaws.services.cognitoidentityprovider.model.UsernameExistsException
 import com.applicaster.awscognitologin.R
 import com.applicaster.awscognitologin.plugin.PluginDataRepository
 import com.applicaster.awscognitologin.screens.activate.ActivateAccountActivity
@@ -18,6 +19,7 @@ import com.applicaster.awscognitologin.utils.UIUtils
 import com.applicaster.plugin_manager.login.LoginManager
 import com.applicaster.util.ui.Toaster
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import java.security.InvalidParameterException
 
 class SignUpActivity : AWSActivity(), SignUpView, View.OnClickListener {
 
@@ -93,6 +95,13 @@ class SignUpActivity : AWSActivity(), SignUpView, View.OnClickListener {
                     return
                 }
 
+                if(!UIUtils.checkIfUsernameMatchesPattern(et_username_su.text.toString())) {
+                    UIUtils.getAlertDialog(this, this.getString(R.string.on_sign_up_failed_title),
+                            this.getString(R.string.on_username_failed_pattern), this.getString(R.string.ok_btn))
+                            .show()
+                    return
+                }
+
                 hideView(tv_confirm_password_validation_su)
 
                 signUpPresenter.signUp(et_username_su.text.toString(),
@@ -138,9 +147,15 @@ class SignUpActivity : AWSActivity(), SignUpView, View.OnClickListener {
     }
 
     override fun onSignUpFailed(exception: Exception) {
-        // todo: value password policies and show user what they are
+        val errorMessage =
+                when (exception) {
+                    is InvalidParameterException -> UIUtils.getPasswordFailMessage(this)
+                    is UsernameExistsException -> this.getString(R.string.on_sign_up_failed_username_doesnt_exists)
+                    else -> this.getString(R.string.on_sign_up_failed_message)
+                }
+
         UIUtils.getAlertDialog(this, this.getString(R.string.on_sign_up_failed_title),
-                this.getString(R.string.on_sign_up_failed_message), this.getString(R.string.ok_btn))
+                errorMessage, this.getString(R.string.ok_btn))
                 .show()
     }
 
